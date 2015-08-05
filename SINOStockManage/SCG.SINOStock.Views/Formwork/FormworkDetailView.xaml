@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.FormworkDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+            xmlns:tbhelper="clr-namespace:SCG.SINOStock.Infrastructure;assembly=SCG.SINOStock.Infrastructure"
+               xmlns:commands="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="UserControl_Loaded_1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1">
+            <StackPanel Width="700">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="产品型号" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Style="{StaticResource detailTextBoxStyle1}" Text="{Binding CurrentFormwork.ProductModel}" IsEnabled="{Binding IsProModelEnb}"/>
+                    <Label Content="每箱数量" Grid.Row="0" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="3" Grid.Row="0" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentFormwork.BoxPCSQty}"/>
+                    <Label Content="每托箱数" Grid.Row="1" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentFormwork.BoxQty}"/>
+                    <Label Content="切数" Grid.Row="1" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="3" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentFormwork.QieShu}" IsEnabled="False"/>
+
+                    <Label Content="行数" Grid.Row="2" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource detailTextBoxStyle}" tbhelper:TextBoxHelper.Password="{Binding Path=CurrentFormwork.RowQty,Mode=TwoWay}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="KeyUp">
+                                <i:InvokeCommandAction Command="{Binding Path=CmdChangeQieShu}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+
+                    <Label Content="列数" Grid.Row="2" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="3" Grid.Row="2" Style="{StaticResource detailTextBoxStyle}" tbhelper:TextBoxHelper.Password="{Binding Path=CurrentFormwork.ColumnQty,Mode=TwoWay}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="KeyUp">
+                                <i:InvokeCommandAction Command="{Binding Path=CmdChangeQieShu}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <Label Content="ID位数" Grid.Row="3" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource detailTextBoxStyle1}" tbhelper:TextBoxHelper.Password="{Binding Path=CurrentFormwork.IDNumber,Mode=TwoWay}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="KeyUp">
+                                <commands:EventToCommand Command="{Binding Path=CmdTest}" PassEventArgsToCommand="True"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </TextBox>
+
+                    <Label Content="关键字" Grid.Row="3" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Bottom" Margin="0,0,0,5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <TextBox Width="20" Height="20" ToolTip="1" Text="{Binding IdKeyWordsTmp.strKey1}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled1}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="2" Text="{Binding IdKeyWordsTmp.strKey2}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled2}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="3" Text="{Binding IdKeyWordsTmp.strKey3}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled3}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="4" Text="{Binding IdKeyWordsTmp.strKey4}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled4}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="5" Text="{Binding IdKeyWordsTmp.strKey5}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled5}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="6" Text="{Binding IdKeyWordsTmp.strKey6}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled6}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="7" Text="{Binding IdKeyWordsTmp.strKey7}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled7}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="8" Text="{Binding IdKeyWordsTmp.strKey8}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled8}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="9" Text="{Binding IdKeyWordsTmp.strKey9}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled9}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="10" Text="{Binding IdKeyWordsTmp.strKey10}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled10}" MaxLength="1"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <TextBox Width="20" Height="20" ToolTip="11" Text="{Binding IdKeyWordsTmp.strKey11}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled11}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="12" Text="{Binding IdKeyWordsTmp.strKey12}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled12}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="13" Text="{Binding IdKeyWordsTmp.strKey13}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled13}" MaxLength="1"/>
+                                <TextBox Width="20" Height="20" ToolTip="14" Text="{Binding IdKeyWordsTmp.strKey14}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled14}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="15" Text="{Binding IdKeyWordsTmp.strKey15}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled15}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="16" Text="{Binding IdKeyWordsTmp.strKey16}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled16}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="17" Text="{Binding IdKeyWordsTmp.strKey17}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled17}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="18" Text="{Binding IdKeyWordsTmp.strKey18}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled18}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="19" Text="{Binding IdKeyWordsTmp.strKey19}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled19}" MaxLength="1" />
+                                <TextBox Width="20" Height="20" ToolTip="20" Text="{Binding IdKeyWordsTmp.strKey20}" IsEnabled="{Binding IdKeyWordsTmp.IsEnabled20}" MaxLength="1" />
+                            </StackPanel>
+                        </Grid>
+
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="确认保存" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdSave}"/>
+                <Button Content="返回列表" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

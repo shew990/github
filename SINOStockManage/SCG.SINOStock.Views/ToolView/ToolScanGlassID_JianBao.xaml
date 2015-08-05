@@ -1,0 +1,64 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:extToolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit" 
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+         xmlns:ToolView="clr-namespace:SCG.SINOStock.Views.ToolView" x:Class="SCG.SINOStock.Views.ToolScanGlassID_JianBao"
+         Title="减薄扫描GlassID" Height="600" Width="900" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+    <Border  BorderThickness="1,1,1,1" Background="#FFFFFFFF" BorderBrush="#CC000000" Height="600"  VerticalAlignment="Bottom">
+        <!--CornerRadius="10,10,10,10"-->
+        <Border CornerRadius="8,8,8,8" Background="#99FFFFFF" Margin="0,-2,0,2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18"/>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+                </StackPanel>
+
+
+
+
+                <Label x:Name="TitleInfo" Grid.Row="0" Background="#1C86EE" MouseLeftButtonDown="Label_MouseLeftButtonDown" Content="减薄扫描GlassID"/>
+                <!--<Label Grid.Row="0" Content="提示" Height="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10"/>-->
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Orientation="Horizontal">
+                    <Button Content="确定减薄" x:Name="btnOK" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnOK_Click" />
+
+                </StackPanel>
+                <Label Content="品质信息:" HorizontalAlignment="Left" Margin="26,57,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="减薄槽号:" HorizontalAlignment="Left" Margin="26,28,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="92,28,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" Text="{Binding CurrentStockDetail.JianBaoNum}"/>
+                <Label Content="减薄时间:" HorizontalAlignment="Left" Margin="394,28,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="5.607,-0.88"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="489,30,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="{Binding CurrentStockDetail.JianBaoDT, StringFormat=yyyy-MM-dd HH:mm:ss}"/>
+                <Label Content="是否抛光:" HorizontalAlignment="Left" Margin="394,56,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <CheckBox Content="抛光" HorizontalAlignment="Left" Margin="489,62,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933"  IsChecked="{Binding CurrentStockDetail.IsPaoGuang}"/>
+                <Label Content="抛光种类:" HorizontalAlignment="Left" Margin="394,110,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <RadioButton Content="制程抛光" HorizontalAlignment="Left" Margin="489,116,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding IsZhiCheng}" IsEnabled="{Binding CurrentStockDetail.IsPaoGuang}" RenderTransformOrigin="0.507,-4.714"/>
+                <RadioButton Content="付费抛光" HorizontalAlignment="Left" Margin="592,116,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="1.912,0.933" IsChecked="{Binding IsFuFei}" IsEnabled="{Binding CurrentStockDetail.IsPaoGuang}"/>
+                <Label Content="抛光面:" HorizontalAlignment="Left" Margin="406,85,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <CheckBox Content="TFT面" HorizontalAlignment="Left" Margin="489,90,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933" IsChecked="{Binding IsTFT}" IsEnabled="{Binding CurrentStockDetail.IsPaoGuang}"/>
+                <CheckBox Content="CF面" HorizontalAlignment="Left" Margin="592,90,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933" IsChecked="{Binding IsCF}" IsEnabled="{Binding CurrentStockDetail.IsPaoGuang}"/>
+                <!--<Button x:Name="abc" HorizontalAlignment="Left" Margin="66,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" RenderTransformOrigin="4.125,1.368" Height="27">
+                    <CheckBox Content="EF"/>
+                </Button>-->
+                <ToolView:CheckBoxButtonList IsEnabled="{Binding IsImgHOLD}" x:Name="cbList" HorizontalAlignment="Left" Height="352" Margin="26,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="832"/>
+                <ToolView:CheckBoxList HorizontalAlignment="Left" x:Name="cbInfoList" Margin="92,67,0,0" Grid.Row="1" VerticalAlignment="Top" Height="90" Width="261"/>
+                <Label Content="HOLD状态:" HorizontalAlignment="Left" Margin="384,143,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.563,1.52"/>
+                <CheckBox Content="HOLD" HorizontalAlignment="Left" Margin="489,149,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding IsHOLD}" RenderTransformOrigin="0.519,-0.733"/>
+
+
+            </Grid>
+        </Border>
+    </Border>
+
+</Window>

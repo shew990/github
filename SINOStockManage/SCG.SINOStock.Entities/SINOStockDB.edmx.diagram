@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5d50ae465524ef09542651c1d309e59" Name="关系图1" ZoomLevel="76">
+        <EntityTypeShape EntityType="SINOStockDBModel.Account" Width="1.5" PointX="11.75" PointY="2.875" />
+        <EntityTypeShape EntityType="SINOStockDBModel.FormWork" Width="1.5" PointX="8.4308381622800788" PointY="10.745946471926731" />
+        <EntityTypeShape EntityType="SINOStockDBModel.Function" Width="1.5" PointX="4.4812467677897061" PointY="1.5725792802742586" />
+        <EntityTypeShape EntityType="SINOStockDBModel.FunctionDetail" Width="1.5" PointX="6.918053311723309" PointY="2.4427463572671386" />
+        <EntityTypeShape EntityType="SINOStockDBModel.QualityInfo" Width="1.5" PointX="8.8779013067846648" PointY="25.305875804883371" />
+        <EntityTypeShape EntityType="SINOStockDBModel.Remove_StockBox" Width="1.5" PointX="11.443810986095951" PointY="4.3748749216901484" />
+        <EntityTypeShape EntityType="SINOStockDBModel.Remove_Tray" Width="1.5" PointX="10.625" PointY="10.625" />
+        <EntityTypeShape EntityType="SINOStockDBModel.Role" Width="1.5" PointX="6.8308685491005283" PointY="1.6731655456466439" />
+        <EntityTypeShape EntityType="SINOStockDBModel.RuleMapFunction" Width="1.5" PointX="6.4190762240528487" PointY="16.558602385483031" />
+        <EntityTypeShape EntityType="SINOStockDBModel.StockBox" Width="1.5" PointX="8.8109819296798584" PointY="30.241148903146922" />
+        <EntityTypeShape EntityType="SINOStockDBModel.StockDetail" Width="1.5" PointX="10.474714636092408" PointY="29.699272810341451" />
+        <EntityTypeShape EntityType="SINOStockDBModel.StockLot" Width="1.5" PointX="5.2680554265473294" PointY="29.179942815182702" />
+        <EntityTypeShape EntityType="SINOStockDBModel.StockLotOut" Width="1.5" PointX="4.125" PointY="17.125" />
+        <EntityTypeShape EntityType="SINOStockDBModel.StockOutDetail" Width="1.5" PointX="4.6596846173795337" PointY="8.5280624518767283" />
+        <EntityTypeShape EntityType="SINOStockDBModel.StockProDic" Width="1.5" PointX="9.125" PointY="0.875" />
+        <EntityTypeShape EntityType="SINOStockDBModel.Tray" Width="1.5" PointX="8.1309534591301116" PointY="18.872447573986111" />
+        <AssociationConnector Association="SINOStockDBModel.FK_Account_Role" />
+        <AssociationConnector Association="SINOStockDBModel.FK_FunctionDetail_Function" />
+        <AssociationConnector Association="SINOStockDBModel.FK_RuleMapFunction_Function" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockBox_StockLotOut" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockBox_Tray" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockOutDetail_StockBox" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockBox_Tray1" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockDetail_StockBox" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockDetail_StockLot" />
+        <AssociationConnector Association="SINOStockDBModel.FK_StockOutDetail_StockLotOut" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

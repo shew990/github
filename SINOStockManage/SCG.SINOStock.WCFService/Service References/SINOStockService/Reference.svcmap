@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f6604f05-4aff-4a0e-8702-7df7115427c3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:18008/SINOStockService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SINOStockService.wsdl" MetadataType="Wsdl" ID="4bb73cf7-ee87-4231-b3f5-905aec0f954e" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?wsdl" />
+    <MetadataFile FileName="SINOStockService.xsd" MetadataType="Schema" ID="9b153aae-8884-4196-ad7a-135385c8caa5" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SINOStockService1.xsd" MetadataType="Schema" ID="b06efcda-2346-4115-9dcb-39f1c9fce4b5" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SINOStockService.disco" MetadataType="Disco" ID="efa7b345-dbc5-4a67-adc3-cf2a99c25cda" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?disco" />
+    <MetadataFile FileName="SINOStockService2.xsd" MetadataType="Schema" ID="21cde22e-21dd-49b3-b20d-e230cd72ffba" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SINOStockService4.xsd" MetadataType="Schema" ID="7e8db07d-e3f8-4d4c-9eb1-60c07cf57f6d" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SINOStockService3.xsd" MetadataType="Schema" ID="63c6c9a7-e3ca-4201-ba75-6affd5181799" SourceId="1" SourceUrl="http://localhost:18008/SINOStockService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

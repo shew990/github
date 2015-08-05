@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.QualityInfoDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1">
+            <StackPanel Width="500">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <!--<Label Content="角色编号" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Style="{StaticResource detailTextBoxStyle}" IsEnabled="False" Text="{Binding CurrentRole.ID}"/>-->
+                    <Label Content="品质名称" Grid.Row="1" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentQualityInfo.Name}"/>
+
+                    <Label Content="所属工序" Grid.Row="2" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <ComboBox Height="25" Width="200" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding InfoTypeCollection}" SelectedItem="{Binding CurrentQualityInfo.InfoType}"/>
+                    <!--<GroupBox Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" >
+                        <UniformGrid Columns="2" VerticalAlignment="Top">
+
+                            <CheckBox Content="用户管理" Margin="5"/>
+                            <CheckBox Content="角色管理" Margin="5"/>
+                            <CheckBox Content="模版管理" Margin="5"/>
+                            <CheckBox Content="入库管理(无对比)" Margin="5"/>
+                            <CheckBox Content="出库管理" Margin="5"/>
+                            <CheckBox Content="剪薄" Margin="5"/>
+                            <CheckBox Content="抛光" Margin="5"/>
+                            <CheckBox Content="镀膜" Margin="5"/>
+                        </UniformGrid>
+                    </GroupBox>-->
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="确认保存" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdSave}"/>
+                <Button Content="返回列表" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<Window x:Class="SCG.SINOStock.Views.ToolChangePwd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ToolChangePwd"  Height="250" Width="450" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Border  BorderThickness="1,1,1,1" Background="#FFFFFFFF" BorderBrush="#CC000000" Height="250" VerticalAlignment="Bottom">
+        <!--CornerRadius="10,10,10,10"-->
+        <Border CornerRadius="8,8,8,8" Background="#99FFFFFF">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="349*"/>
+                    <ColumnDefinition Width="49*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+
+                </StackPanel>
+
+
+
+
+                <Label x:Name="TitleInfo" Grid.Row="0" Background="#1C86EE" MouseLeftButtonDown="Label_MouseLeftButtonDown" Content="修改密码"  Grid.ColumnSpan="2"/>
+                <!--<Label Grid.Row="0" Content="提示" Height="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10"/>-->
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6,5,6" Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <Button Content="取消" x:Name="btnCancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Command="{Binding CmdCancel}" Visibility="{Binding CancelVisibility}" Click="btnCancel_Click"/>
+                    <Button Content="确认" x:Name="BtnPrint" HorizontalAlignment="Left" Cursor="Hand" VerticalAlignment="Top" Width="75" Margin="5,0,2,0" Command="{Binding CmdOK}" Click="BtnPrint_Click"/>
+                </StackPanel>
+
+                <Label x:Name="title" Content="原密码：" HorizontalAlignment="Left" Margin="67,20,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-0.016,0.488"/>
+                <PasswordBox x:Name="txtOldPwd" HorizontalAlignment="Left" Height="23" Margin="140,22,0,0" Grid.Row="1"   VerticalAlignment="Top" Width="227"/>
+                <Label x:Name="title_Copy" Content="新密码：" HorizontalAlignment="Left" Margin="67,74,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-0.016,0.488"/>
+                <PasswordBox x:Name="txtNewPwd" HorizontalAlignment="Left" Height="23" Margin="140,76,0,0" Grid.Row="1"  VerticalAlignment="Top" Width="227"/>
+                <Label x:Name="title_Copy1" Content="确认密码：" HorizontalAlignment="Left" Margin="55,128,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-0.016,0.488"/>
+                <PasswordBox x:Name="txtCheckPwd" HorizontalAlignment="Left" Height="23" Margin="140,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="227"/>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.StockLotDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                  xmlns:commands="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+                 xmlns:localConvert="clr-namespace:SCG.SINOStock.Common;assembly=SCG.SINOStock.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=CmdPageLoad}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid IsEnabled="{Binding Path=IsBusy}">
+        <Grid.Resources>
+            
+            <localConvert:DictValueConvert x:Key="StatusDictToName"/>
+            <localConvert:DictBoolValueConvert x:Key="DictBoolConvert"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="100"/>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox  Header="统计信息" Grid.Row="0" Margin="4 4 4 4 ">
+            <StackPanel >
+                <Label Content="{Binding LotNoInfo}" HorizontalAlignment="Left"/>
+                <Label Content="{Binding StockInInfo}" HorizontalAlignment="Left"/>
+                <Label Content="{Binding JianBaoInfo}" HorizontalAlignment="Left"/>
+                <Label Content="{Binding PaoGuangInfo}" HorizontalAlignment="Left"/>
+                <Label Content="{Binding DuMoInfo}" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  Grid.Row="1" Margin="4 4 4 4 ">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" >
+                    <Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdExoprt}" Visibility="{Binding ExportVisibility}" >
+                        <StackPanel Orientation="Horizontal">
+
+                            <Label Content="导出Excel" />
+
+                        </StackPanel>
+                    </Button>
+                    <Label Content="   入库品质信息:" />
+                    <ComboBox Height="25" Width="150" ItemsSource="{Binding StockInList}" SelectedItem="{Binding StockInSelect}"/>
+                    <Label Content="   减薄品质信息:" />
+                    <ComboBox Height="25" Width="150" ItemsSource="{Binding JianBaoList}" SelectedItem="{Binding JianBaoSelect}" />
+                    <Label Content="   抛光品质信息:" />
+                    <ComboBox Height="25" Width="150" ItemsSource="{Binding PaoGuangList}" SelectedItem="{Binding PaoGuangSelect}" />
+              
+                
+                  
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Label Content="                       镀膜品质信息:" />
+                    <ComboBox Height="25" Width="150" ItemsSource="{Binding DuMoList}" SelectedItem="{Binding DuMoSelect}" />
+                    <Label Content="            GlassID:"/>
+                    <TextBox Grid.Column="1" Width="150" VerticalContentAlignment="Center" Text="{Binding Path=GlassSearchId}"/>
+                    <Label Content="                                                                               "/>
+                    <Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdQuery}" >
+                        <StackPanel Orientation="Horizontal">
+
+                            <Label Content="    查询    " />
+
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                </StackPanel>
+           
+        </GroupBox>
+        <GroupBox  Header="GlassID列表" Grid.Row="2" Margin="4 4 4 4 ">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="137*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DataGrid AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False"  IsReadOnly="True"
+                    CanUserAddRows="False" Margin="0,8,0,0" Grid.Row="0" ItemsSource="{Binding StockDetailCollection}" Grid.ColumnSpan="2"  SelectedItem="{Binding CurrentDetail}" LoadingRow="DataGrid_LoadingRow" >
+                    <DataGrid.Columns>
+                     
+                        <DataGridTextColumn Header="GlassID" Binding="{Binding GlassID}" Width="*" />
+                        <DataGridTextColumn Header="型号" Binding="{Binding StockLot.ProModel}" Width="50" />
+                        <DataGridTextColumn Header="状态"  Binding="{Binding Path=Status,Converter={StaticResource StatusDictToName},ConverterParameter=StockDetailStatus}" Width="50" />
+                        <DataGridTextColumn Header="创建时间" Binding="{Binding CreateDt,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="100" />
+                        <DataGridTextColumn Header="入库操作人" Binding="{Binding AccountName}" Width="100" />
+                        <DataGridTextColumn Header="入库时间" Binding="{Binding StockInDT,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="100" />
+                        <DataGridTextColumn Header="减薄操作人" Binding="{Binding JianBaoAccountName}" Width="100" />
+                        <DataGridTextColumn Header="减薄时间" Binding="{Binding JianBaoDT,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="100" />
+                        <DataGridTextColumn Header="抛光操作人" Binding="{Binding PaoGuangAccountName}" Width="100" />
+                        <DataGridTextColumn Header="抛光时间" Binding="{Binding PaoGuangDT,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="100" />
+                        <DataGridTextColumn Header="镀膜操作人" Binding="{Binding DuMoAccountName}" Width="100" />
+                        <DataGridTextColumn Header="镀膜时间" Binding="{Binding DuMoDT,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="100" />
+                        <DataGridTextColumn Header="HOLD状态" Binding="{Binding Path=IsHOLD,Converter={StaticResource StatusDictToName},ConverterParameter=BoolConvertYesOrNo}" Width="60" />
+                        <DataGridTemplateColumn Header="操作" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Visibility="{Binding Path=DataContext.HOLDVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" IsEnabled="{Binding Path=IsHOLD,Converter={StaticResource DictBoolConvert}}" Content="HOLD" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdHOLD,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.UnHOLDVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" IsEnabled="{Binding Path=IsHOLD}" Content="解除HOLD" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdUnHOLD,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                    </StackPanel>
+
+                                </DataTemplate>
+
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Visibility="{Binding Path=IsVisibility}" VerticalAlignment="Center" Grid.Row="2">
+            <TextBlock HorizontalAlignment="Center" FontSize="14"><Run Text="GlassID数据正在加载中..."/></TextBlock>
+            <Image Width="255" Height="39" Source="../Assets/Images/LoadingIMG.png"/>
+        </StackPanel>
+        <GroupBox Grid.Row="3">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="返回列表" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

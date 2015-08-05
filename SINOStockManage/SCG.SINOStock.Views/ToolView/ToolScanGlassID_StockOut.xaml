@@ -1,0 +1,52 @@
+﻿<Window x:Class="SCG.SINOStock.Views.ToolScanGlassID_StockOut"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:ToolView="clr-namespace:SCG.SINOStock.Views.ToolView"
+        Title="ToolScanGlassID_StockOut"  Height="600" Width="900" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+    <Border  BorderThickness="1,1,1,1" Background="#FFFFFFFF" BorderBrush="#CC000000" Height="600"  VerticalAlignment="Bottom">
+        <!--CornerRadius="10,10,10,10"-->
+        <Border CornerRadius="8,8,8,8" Background="#99FFFFFF">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18"/>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+                </StackPanel>
+
+
+
+
+                <Label x:Name="TitleInfo" Grid.Row="0" Background="#1C86EE" MouseLeftButtonDown="Label_MouseLeftButtonDown" Content="镀膜扫描GlassID"/>
+                <!--<Label Grid.Row="0" Content="提示" Height="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10"/>-->
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Orientation="Horizontal">
+                    <Button Content="确定镀膜" x:Name="btnOK" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnOK_Click" />
+
+                </StackPanel>
+                <Label Content="品质信息:" HorizontalAlignment="Left" Margin="26,67,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="镀膜时间:" HorizontalAlignment="Left" Margin="26,28,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="5.607,-0.88"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="92,30,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" Text="{Binding CurrentStockDetail.DuMoDT, StringFormat=yyyy-MM-dd HH:mm:ss}"/>
+                <Label Content="是否进行了抛光:" HorizontalAlignment="Left" Margin="395,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <RadioButton GroupName="rbGroupIsPaoGuang" Content="无"  HorizontalAlignment="Left" Margin="512,36,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933"  IsChecked="{Binding IsWu}"/>
+                <!--<Button x:Name="abc" HorizontalAlignment="Left" Margin="66,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" RenderTransformOrigin="4.125,1.368" Height="27">
+                    <CheckBox Content="EF"/>
+                </Button>-->
+                <ToolView:CheckBoxButtonList IsEnabled="{Binding IsImgHOLD}" x:Name="cbList" HorizontalAlignment="Left" Height="352" Margin="26,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="832"/>
+                <ToolView:CheckBoxList x:Name="cbInfoList" HorizontalAlignment="Left" Margin="92,67,0,0" Grid.Row="1" VerticalAlignment="Top" Height="80" Width="257"/>
+               <RadioButton Content="单面" GroupName="rbGroupIsPaoGuang" HorizontalAlignment="Left" Margin="601,36,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933"  IsChecked="{Binding IsDanMian}"/>
+                <RadioButton Content="双面" GroupName="rbGroupIsPaoGuang" HorizontalAlignment="Left" Margin="699,38,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933"  IsChecked="{Binding IsShuangMian}"/>
+
+            </Grid>
+        </Border>
+    </Border>
+</Window>

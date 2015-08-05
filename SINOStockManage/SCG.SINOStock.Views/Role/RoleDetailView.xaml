@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.RoleDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SCG.SINOStock.Infrastructure;assembly=SCG.SINOStock.Infrastructure"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+               xmlns:commands="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+             mc:Ignorable="d" 
+               d:DesignHeight="600" d:DesignWidth="1000" Loaded="View_Loaded">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=CmdPageLoad}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1">
+            <StackPanel Width="500">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="350"/>
+                    </Grid.RowDefinitions>
+                    <!--<Label Content="角色编号" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Style="{StaticResource detailTextBoxStyle}" IsEnabled="False" Text="{Binding CurrentRole.ID}"/>-->
+                    <Label Content="角色名称" Grid.Row="1" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentRole.RuleName}"/>
+                    <Label Content="功能权限" Grid.Row="2" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TreeView Grid.Row="2" Grid.Column="1" ItemsSource="{Binding RoleFunctionList}">
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type local:PropertyNodeItem}" ItemsSource="{Binding Path=Children}">
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding IsCheck}"/>
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"/>
+
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <!--<GroupBox Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" >
+                        <UniformGrid Columns="2" VerticalAlignment="Top">
+
+                            <CheckBox Content="用户管理" Margin="5"/>
+                            <CheckBox Content="角色管理" Margin="5"/>
+                            <CheckBox Content="模版管理" Margin="5"/>
+                            <CheckBox Content="入库管理(无对比)" Margin="5"/>
+                            <CheckBox Content="出库管理" Margin="5"/>
+                            <CheckBox Content="剪薄" Margin="5"/>
+                            <CheckBox Content="抛光" Margin="5"/>
+                            <CheckBox Content="镀膜" Margin="5"/>
+                        </UniformGrid>
+                    </GroupBox>-->
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="确认保存" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdSave}"/>
+                <Button Content="返回列表" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

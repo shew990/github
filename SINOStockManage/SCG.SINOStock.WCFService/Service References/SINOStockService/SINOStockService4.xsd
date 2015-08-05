@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/SCG.SINOStock.WCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SCG.SINOStock.WCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:18008/SINOStockService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfStockOutQtyHelper">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StockOutQtyHelper" nillable="true" type="tns:StockOutQtyHelper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStockOutQtyHelper" nillable="true" type="tns:ArrayOfStockOutQtyHelper" />
+  <xs:complexType name="StockOutQtyHelper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LOTNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Qty" type="xs:int" />
+      <xs:element minOccurs="0" name="StockOutQty" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="StockOutQtyHelper" nillable="true" type="tns:StockOutQtyHelper" />
+</xs:schema>

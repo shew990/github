@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SINOStockDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SINOStockDBModelStoreContainer">
+          <EntitySet Name="Account" EntityType="SINOStockDBModel.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FormWork" EntityType="SINOStockDBModel.Store.FormWork" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Function" EntityType="SINOStockDBModel.Store.Function" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FunctionDetail" EntityType="SINOStockDBModel.Store.FunctionDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QualityInfo" EntityType="SINOStockDBModel.Store.QualityInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Remove_StockBox" EntityType="SINOStockDBModel.Store.Remove_StockBox" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Remove_Tray" EntityType="SINOStockDBModel.Store.Remove_Tray" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="SINOStockDBModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RuleMapFunction" EntityType="SINOStockDBModel.Store.RuleMapFunction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockBox" EntityType="SINOStockDBModel.Store.StockBox" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockDetail" EntityType="SINOStockDBModel.Store.StockDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockLot" EntityType="SINOStockDBModel.Store.StockLot" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockLotOut" EntityType="SINOStockDBModel.Store.StockLotOut" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockOutDetail" EntityType="SINOStockDBModel.Store.StockOutDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockProDic" EntityType="SINOStockDBModel.Store.StockProDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tray" EntityType="SINOStockDBModel.Store.Tray" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Account_Role" Association="SINOStockDBModel.Store.FK_Account_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FunctionDetail_Function" Association="SINOStockDBModel.Store.FK_FunctionDetail_Function">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="FunctionDetail" EntitySet="FunctionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RuleMapFunction_Function" Association="SINOStockDBModel.Store.FK_RuleMapFunction_Function">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="RuleMapFunction" EntitySet="RuleMapFunction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockBox_StockLotOut" Association="SINOStockDBModel.Store.FK_StockBox_StockLotOut">
+            <End Role="StockLotOut" EntitySet="StockLotOut" />
+            <End Role="Remove_StockBox" EntitySet="Remove_StockBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockBox_Tray" Association="SINOStockDBModel.Store.FK_StockBox_Tray">
+            <End Role="Remove_Tray" EntitySet="Remove_Tray" />
+            <End Role="Remove_StockBox" EntitySet="Remove_StockBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockBox_Tray1" Association="SINOStockDBModel.Store.FK_StockBox_Tray1">
+            <End Role="Tray" EntitySet="Tray" />
+            <End Role="StockBox" EntitySet="StockBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockDetail_StockBox" Association="SINOStockDBModel.Store.FK_StockDetail_StockBox">
+            <End Role="StockBox" EntitySet="StockBox" />
+            <End Role="StockDetail" EntitySet="StockDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockDetail_StockLot" Association="SINOStockDBModel.Store.FK_StockDetail_StockLot">
+            <End Role="StockLot" EntitySet="StockLot" />
+            <End Role="StockDetail" EntitySet="StockDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockOutDetail_StockBox" Association="SINOStockDBModel.Store.FK_StockOutDetail_StockBox">
+            <End Role="Remove_StockBox" EntitySet="Remove_StockBox" />
+            <End Role="StockOutDetail" EntitySet="StockOutDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockOutDetail_StockLotOut" Association="SINOStockDBModel.Store.FK_StockOutDetail_StockLotOut">
+            <End Role="StockLotOut" EntitySet="StockLotOut" />
+            <End Role="StockOutDetail" EntitySet="StockOutDetail" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoginNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="LoginPwd" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDt" Type="datetime" />
+          <Property Name="ModifyDt" Type="datetime" />
+          <Property Name="CheckCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="LoginDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormWork">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductModel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BoxPCSQty" Type="int" Nullable="false" />
+          <Property Name="BoxQty" Type="int" Nullable="false" />
+          <Property Name="IDNumber" Type="int" Nullable="false" />
+          <Property Name="IDKeyWords" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="QieShu" Type="int" Nullable="false" />
+          <Property Name="RowQty" Type="int" Nullable="false" />
+          <Property Name="ColumnQty" Type="int" Nullable="false" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="FunctionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="FunctionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QualityInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="InfoType" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Remove_StockBox">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="isPrint" Type="bit" Nullable="false" />
+          <Property Name="TrayID" Type="int" />
+          <Property Name="StockLotOutID" Type="int" Nullable="false" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Remove_Tray">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RuleName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDt" Type="datetime" />
+          <Property Name="RoleMain" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleDetail" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RuleMapFunction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="FunctionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockBox">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="isPrint" Type="bit" Nullable="false" />
+          <Property Name="TrayID" Type="int" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="IsModify" Type="bit" />
+          <Property Name="CreateAccountID" Type="int" />
+        </EntityType>
+        <EntityType Name="StockDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GlassID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="StockLotID" Type="int" Nullable="false" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsPaoGuang" Type="bit" Nullable="false" />
+          <Property Name="StockInDT" Type="datetime" />
+          <Property Name="JianBaoNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="JianBaoDT" Type="datetime" />
+          <Property Name="PaoguangType" Type="nvarchar" MaxLength="10" />
+          <Property Name="PaoGuangMian" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaoGuangNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaoGuangDT" Type="datetime" />
+          <Property Name="DuMoNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="DuMoDT" Type="datetime" />
+          <Property Name="StockBoxID" Type="int" />
+          <Property Name="StockInInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="JianBaoInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="JianBaoImgInfo" Type="nvarchar" />
+          <Property Name="DuMoInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DuMoImgInfo" Type="nvarchar" />
+          <Property Name="PaoGuangInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PaoGuangImgInfo" Type="nvarchar" />
+          <Property Name="IsHOLD" Type="bit" Nullable="false" />
+          <Property Name="IsTuiHuo" Type="bit" Nullable="false" />
+          <Property Name="FanGongNum" Type="int" Nullable="false" />
+          <Property Name="IsFanGong" Type="bit" Nullable="false" />
+          <Property Name="JianBaoAccountID" Type="int" />
+          <Property Name="JianBaoAccountName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaoGuangAccountID" Type="int" />
+          <Property Name="PaoGuangAccountName" Type="nvarchar" MaxLength="80" />
+          <Property Name="DuMoAccountID" Type="int" />
+          <Property Name="DuMoAccountName" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsPaoGuangOverInfo" Type="nvarchar" MaxLength="30" />
+          <Property Name="StockInImgInfo" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="StockLot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PCSQty" Type="int" Nullable="false" />
+          <Property Name="ProModel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LotNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsJianBao" Type="bit" Nullable="false" />
+          <Property Name="IsDuMo" Type="bit" Nullable="false" />
+          <Property Name="DetailInfoHOLD" Type="nvarchar" MaxLength="20" />
+          <Property Name="ImageHOLD" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsImport" Type="bit" Nullable="false" />
+          <Property Name="TuiHuoCount" Type="int" Nullable="false" />
+          <Property Name="GuanKong" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreateAccountID" Type="int" />
+          <Property Name="CreateAccountName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="StockLotOut">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PCSQty" Type="int" Nullable="false" />
+          <Property Name="ProModel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LotNo" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockOutDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GLassID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockBoxID" Type="int" />
+          <Property Name="StockLotOutID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockProDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProModel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PCSQty" Type="int" Nullable="false" />
+          <Property Name="StockLotID" Type="int" Nullable="false" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tray">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_Role">
+          <End Role="Role" Type="SINOStockDBModel.Store.Role" Multiplicity="1" />
+          <End Role="Account" Type="SINOStockDBModel.Store.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FunctionDetail_Function">
+          <End Role="Function" Type="SINOStockDBModel.Store.Function" Multiplicity="1" />
+          <End Role="FunctionDetail" Type="SINOStockDBModel.Store.FunctionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FunctionDetail">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RuleMapFunction_Function">
+          <End Role="Function" Type="SINOStockDBModel.Store.Function" Multiplicity="1" />
+          <End Role="RuleMapFunction" Type="SINOStockDBModel.Store.RuleMapFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleMapFunction">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockBox_StockLotOut">
+          <End Role="StockLotOut" Type="SINOStockDBModel.Store.StockLotOut" Multiplicity="1" />
+          <End Role="Remove_StockBox" Type="SINOStockDBModel.Store.Remove_StockBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockLotOut">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Remove_StockBox">
+              <PropertyRef Name="StockLotOutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockBox_Tray">
+          <End Role="Remove_Tray" Type="SINOStockDBModel.Store.Remove_Tray" Multiplicity="0..1" />
+          <End Role="Remove_StockBox" Type="SINOStockDBModel.Store.Remove_StockBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Remove_Tray">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Remove_StockBox">
+              <PropertyRef Name="TrayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockBox_Tray1">
+          <End Role="Tray" Type="SINOStockDBModel.Store.Tray" Multiplicity="0..1" />
+          <End Role="StockBox" Type="SINOStockDBModel.Store.StockBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tray">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockBox">
+              <PropertyRef Name="TrayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockDetail_StockBox">
+          <End Role="StockBox" Type="SINOStockDBModel.Store.StockBox" Multiplicity="0..1" />
+          <End Role="StockDetail" Type="SINOStockDBModel.Store.StockDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockBox">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockDetail">
+              <PropertyRef Name="StockBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockDetail_StockLot">
+          <End Role="StockLot" Type="SINOStockDBModel.Store.StockLot" Multiplicity="1" />
+          <End Role="StockDetail" Type="SINOStockDBModel.Store.StockDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockLot">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockDetail">
+              <PropertyRef Name="StockLotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockOutDetail_StockBox">
+          <End Role="Remove_StockBox" Type="SINOStockDBModel.Store.Remove_StockBox" Multiplicity="0..1" />
+          <End Role="StockOutDetail" Type="SINOStockDBModel.Store.StockOutDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Remove_StockBox">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockOutDetail">
+              <PropertyRef Name="StockBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockOutDetail_StockLotOut">
+          <End Role="StockLotOut" Type="SINOStockDBModel.Store.StockLotOut" Multiplicity="1" />
+          <End Role="StockOutDetail" Type="SINOStockDBModel.Store.StockOutDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockLotOut">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockOutDetail">
+              <PropertyRef Name="StockLotOutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SINOStockDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SINOStockDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="SINOStockDBModel.Account" />
+          <EntitySet Name="FormWorks" EntityType="SINOStockDBModel.FormWork" />
+          <EntitySet Name="Functions" EntityType="SINOStockDBModel.Function" />
+          <EntitySet Name="FunctionDetails" EntityType="SINOStockDBModel.FunctionDetail" />
+          <EntitySet Name="QualityInfoes" EntityType="SINOStockDBModel.QualityInfo" />
+          <EntitySet Name="Remove_StockBox" EntityType="SINOStockDBModel.Remove_StockBox" />
+          <EntitySet Name="Remove_Tray" EntityType="SINOStockDBModel.Remove_Tray" />
+          <EntitySet Name="Roles" EntityType="SINOStockDBModel.Role" />
+          <EntitySet Name="RuleMapFunctions" EntityType="SINOStockDBModel.RuleMapFunction" />
+          <EntitySet Name="StockBoxes" EntityType="SINOStockDBModel.StockBox" />
+          <EntitySet Name="StockDetails" EntityType="SINOStockDBModel.StockDetail" />
+          <EntitySet Name="StockLots" EntityType="SINOStockDBModel.StockLot" />
+          <EntitySet Name="StockLotOuts" EntityType="SINOStockDBModel.StockLotOut" />
+          <EntitySet Name="StockOutDetails" EntityType="SINOStockDBModel.StockOutDetail" />
+          <EntitySet Name="StockProDics" EntityType="SINOStockDBModel.StockProDic" />
+          <EntitySet Name="Trays" EntityType="SINOStockDBModel.Tray" />
+          <AssociationSet Name="FK_Account_Role" Association="SINOStockDBModel.FK_Account_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FunctionDetail_Function" Association="SINOStockDBModel.FK_FunctionDetail_Function">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="FunctionDetail" EntitySet="FunctionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RuleMapFunction_Function" Association="SINOStockDBModel.FK_RuleMapFunction_Function">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="RuleMapFunction" EntitySet="RuleMapFunctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockBox_StockLotOut" Association="SINOStockDBModel.FK_StockBox_StockLotOut">
+            <End Role="StockLotOut" EntitySet="StockLotOuts" />
+            <End Role="Remove_StockBox" EntitySet="Remove_StockBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockBox_Tray" Association="SINOStockDBModel.FK_StockBox_Tray">
+            <End Role="Remove_Tray" EntitySet="Remove_Tray" />
+            <End Role="Remove_StockBox" EntitySet="Remove_StockBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockOutDetail_StockBox" Association="SINOStockDBModel.FK_StockOutDetail_StockBox">
+            <End Role="Remove_StockBox" EntitySet="Remove_StockBox" />
+            <End Role="StockOutDetail" EntitySet="StockOutDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockBox_Tray1" Association="SINOStockDBModel.FK_StockBox_Tray1">
+            <End Role="Tray" EntitySet="Trays" />
+            <End Role="StockBox" EntitySet="StockBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockDetail_StockBox" Association="SINOStockDBModel.FK_StockDetail_StockBox">
+            <End Role="StockBox" EntitySet="StockBoxes" />
+            <End Role="StockDetail" EntitySet="StockDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockDetail_StockLot" Association="SINOStockDBModel.FK_StockDetail_StockLot">
+            <End Role="StockLot" EntitySet="StockLots" />
+            <End Role="StockDetail" EntitySet="StockDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockOutDetail_StockLotOut" Association="SINOStockDBModel.FK_StockOutDetail_StockLotOut">
+            <End Role="StockLotOut" EntitySet="StockLotOuts" />
+            <End Role="StockOutDetail" EntitySet="StockOutDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LoginNumber" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoginPwd" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Precision="3" />
+          <Property Type="DateTime" Name="ModifyDt" Precision="3" />
+          <Property Type="String" Name="CheckCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RoleID" Nullable="false" />
+          <Property Type="DateTime" Name="LoginDt" Precision="3" />
+          <NavigationProperty Name="Role" Relationship="SINOStockDBModel.FK_Account_Role" FromRole="Account" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="FormWork">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ProductModel" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BoxPCSQty" Nullable="false" />
+          <Property Type="Int32" Name="BoxQty" Nullable="false" />
+          <Property Type="Int32" Name="IDNumber" Nullable="false" />
+          <Property Type="String" Name="IDKeyWords" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="QieShu" Nullable="false" />
+          <Property Type="Int32" Name="RowQty" Nullable="false" />
+          <Property Type="Int32" Name="ColumnQty" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyDt" Precision="3" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FunctionName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FunctionDetails" Relationship="SINOStockDBModel.FK_FunctionDetail_Function" FromRole="Function" ToRole="FunctionDetail" />
+          <NavigationProperty Name="RuleMapFunctions" Relationship="SINOStockDBModel.FK_RuleMapFunction_Function" FromRole="Function" ToRole="RuleMapFunction" />
+        </EntityType>
+        <EntityType Name="FunctionDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FunctionID" Nullable="false" />
+          <NavigationProperty Name="Function" Relationship="SINOStockDBModel.FK_FunctionDetail_Function" FromRole="FunctionDetail" ToRole="Function" />
+        </EntityType>
+        <EntityType Name="QualityInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InfoType" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Remove_StockBox">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="isPrint" Nullable="false" />
+          <Property Type="Int32" Name="TrayID" />
+          <Property Type="Int32" Name="StockLotOutID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <NavigationProperty Name="StockLotOut" Relationship="SINOStockDBModel.FK_StockBox_StockLotOut" FromRole="Remove_StockBox" ToRole="StockLotOut" />
+          <NavigationProperty Name="Remove_Tray" Relationship="SINOStockDBModel.FK_StockBox_Tray" FromRole="Remove_StockBox" ToRole="Remove_Tray" />
+          <NavigationProperty Name="StockOutDetails" Relationship="SINOStockDBModel.FK_StockOutDetail_StockBox" FromRole="Remove_StockBox" ToRole="StockOutDetail" />
+        </EntityType>
+        <EntityType Name="Remove_Tray">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Remove_StockBox" Relationship="SINOStockDBModel.FK_StockBox_Tray" FromRole="Remove_Tray" ToRole="Remove_StockBox" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RuleName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyDt" Precision="3" />
+          <Property Type="String" Name="RoleMain" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RoleDetail" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="SINOStockDBModel.FK_Account_Role" FromRole="Role" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="RuleMapFunction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RoleID" Nullable="false" />
+          <Property Type="Int32" Name="FunctionID" Nullable="false" />
+          <NavigationProperty Name="Function" Relationship="SINOStockDBModel.FK_RuleMapFunction_Function" FromRole="RuleMapFunction" ToRole="Function" />
+        </EntityType>
+        <EntityType Name="StockBox">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="isPrint" Nullable="false" />
+          <Property Type="Int32" Name="TrayID" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tray" Relationship="SINOStockDBModel.FK_StockBox_Tray1" FromRole="StockBox" ToRole="Tray" />
+          <NavigationProperty Name="StockDetails" Relationship="SINOStockDBModel.FK_StockDetail_StockBox" FromRole="StockBox" ToRole="StockDetail" />
+          <Property Type="Boolean" Name="IsModify" />
+          <Property Type="Int32" Name="CreateAccountID" />
+        </EntityType>
+        <EntityType Name="StockDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GlassID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Qty" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="StockLotID" Nullable="false" />
+          <Property Type="Int32" Name="AccountID" Nullable="false" />
+          <Property Type="String" Name="AccountName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="IsPaoGuang" Nullable="false" />
+          <Property Type="DateTime" Name="StockInDT" Precision="3" />
+          <Property Type="String" Name="JianBaoNum" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="JianBaoDT" Precision="3" />
+          <Property Type="String" Name="PaoguangType" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaoGuangMian" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaoGuangNum" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PaoGuangDT" Precision="3" />
+          <Property Type="String" Name="DuMoNum" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DuMoDT" Precision="3" />
+          <Property Type="Int32" Name="StockBoxID" />
+          <Property Type="String" Name="StockInInfo" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="JianBaoInfo" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="JianBaoImgInfo" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DuMoInfo" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DuMoImgInfo" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaoGuangInfo" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaoGuangImgInfo" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsHOLD" Nullable="false" />
+          <Property Type="Int32" Name="FanGongNum" Nullable="false" />
+          <Property Type="Boolean" Name="IsFanGong" Nullable="false" />
+          <Property Type="Int32" Name="JianBaoAccountID" />
+          <Property Type="String" Name="JianBaoAccountName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PaoGuangAccountID" />
+          <Property Type="String" Name="PaoGuangAccountName" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DuMoAccountID" />
+          <Property Type="String" Name="DuMoAccountName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IsPaoGuangOverInfo" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StockBox" Relationship="SINOStockDBModel.FK_StockDetail_StockBox" FromRole="StockDetail" ToRole="StockBox" />
+          <NavigationProperty Name="StockLot" Relationship="SINOStockDBModel.FK_StockDetail_StockLot" FromRole="StockDetail" ToRole="StockLot" />
+          <Property Type="Boolean" Name="IsTuiHuo" Nullable="false" />
+          <Property Type="String" Name="StockInImgInfo" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StockLot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PCSQty" Nullable="false" />
+          <Property Type="String" Name="ProModel" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LotNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="IsJianBao" Nullable="false" />
+          <Property Type="Boolean" Name="IsDuMo" Nullable="false" />
+          <Property Type="String" Name="DetailInfoHOLD" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageHOLD" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsImport" Nullable="false" />
+          <NavigationProperty Name="StockDetails" Relationship="SINOStockDBModel.FK_StockDetail_StockLot" FromRole="StockLot" ToRole="StockDetail" />
+          <Property Type="Int32" Name="TuiHuoCount" Nullable="false" />
+          <Property Type="String" Name="GuanKong" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CreateAccountID" />
+          <Property Type="String" Name="CreateAccountName" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StockLotOut">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PCSQty" Nullable="false" />
+          <Property Type="String" Name="ProModel" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LotNo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="Remove_StockBox" Relationship="SINOStockDBModel.FK_StockBox_StockLotOut" FromRole="StockLotOut" ToRole="Remove_StockBox" />
+          <NavigationProperty Name="StockOutDetails" Relationship="SINOStockDBModel.FK_StockOutDetail_StockLotOut" FromRole="StockLotOut" ToRole="StockOutDetail" />
+        </EntityType>
+        <EntityType Name="StockOutDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GLassID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="AccountID" Nullable="false" />
+          <Property Type="String" Name="AccountName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="StockBoxID" />
+          <Property Type="Int32" Name="StockLotOutID" Nullable="false" />
+          <NavigationProperty Name="Remove_StockBox" Relationship="SINOStockDBModel.FK_StockOutDetail_StockBox" FromRole="StockOutDetail" ToRole="Remove_StockBox" />
+          <NavigationProperty Name="StockLotOut" Relationship="SINOStockDBModel.FK_StockOutDetail_StockLotOut" FromRole="StockOutDetail" ToRole="StockLotOut" />
+        </EntityType>
+        <EntityType Name="StockProDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ProModel" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PCSQty" Nullable="false" />
+          <Property Type="Int32" Name="StockLotID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tray">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDt" Nullable="false" Precision="3" />
+          <NavigationProperty Name="StockBoxes" Relationship="SINOStockDBModel.FK_StockBox_Tray1" FromRole="Tray" ToRole="StockBox" />
+        </EntityType>
+        <Association Name="FK_Account_Role">
+          <End Type="SINOStockDBModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="SINOStockDBModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FunctionDetail_Function">
+          <End Type="SINOStockDBModel.Function" Role="Function" Multiplicity="1" />
+          <End Type="SINOStockDBModel.FunctionDetail" Role="FunctionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FunctionDetail">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RuleMapFunction_Function">
+          <End Type="SINOStockDBModel.Function" Role="Function" Multiplicity="1" />
+          <End Type="SINOStockDBModel.RuleMapFunction" Role="RuleMapFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RuleMapFunction">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockBox_StockLotOut">
+          <End Type="SINOStockDBModel.StockLotOut" Role="StockLotOut" Multiplicity="1" />
+          <End Type="SINOStockDBModel.Remove_StockBox" Role="Remove_StockBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockLotOut">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Remove_StockBox">
+              <PropertyRef Name="StockLotOutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockBox_Tray">
+          <End Type="SINOStockDBModel.Remove_Tray" Role="Remove_Tray" Multiplicity="0..1" />
+          <End Type="SINOStockDBModel.Remove_StockBox" Role="Remove_StockBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Remove_Tray">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Remove_StockBox">
+              <PropertyRef Name="TrayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockOutDetail_StockBox">
+          <End Type="SINOStockDBModel.Remove_StockBox" Role="Remove_StockBox" Multiplicity="0..1" />
+          <End Type="SINOStockDBModel.StockOutDetail" Role="StockOutDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Remove_StockBox">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockOutDetail">
+              <PropertyRef Name="StockBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockBox_Tray1">
+          <End Type="SINOStockDBModel.Tray" Role="Tray" Multiplicity="0..1" />
+          <End Type="SINOStockDBModel.StockBox" Role="StockBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tray">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockBox">
+              <PropertyRef Name="TrayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockDetail_StockBox">
+          <End Type="SINOStockDBModel.StockBox" Role="StockBox" Multiplicity="0..1" />
+          <End Type="SINOStockDBModel.StockDetail" Role="StockDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockBox">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockDetail">
+              <PropertyRef Name="StockBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockDetail_StockLot">
+          <End Type="SINOStockDBModel.StockLot" Role="StockLot" Multiplicity="1" />
+          <End Type="SINOStockDBModel.StockDetail" Role="StockDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockLot">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockDetail">
+              <PropertyRef Name="StockLotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockOutDetail_StockLotOut">
+          <End Type="SINOStockDBModel.StockLotOut" Role="StockLotOut" Multiplicity="1" />
+          <End Type="SINOStockDBModel.StockOutDetail" Role="StockOutDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockLotOut">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StockOutDetail">
+              <PropertyRef Name="StockLotOutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SINOStockDBModelStoreContainer" CdmEntityContainer="SINOStockDBEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="SINOStockDBModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="LoginDt" ColumnName="LoginDt" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="CheckCode" ColumnName="CheckCode" />
+                <ScalarProperty Name="ModifyDt" ColumnName="ModifyDt" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="LoginNumber" ColumnName="LoginNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormWorks">
+            <EntityTypeMapping TypeName="SINOStockDBModel.FormWork">
+              <MappingFragment StoreEntitySet="FormWork">
+                <ScalarProperty Name="ModifyDt" ColumnName="ModifyDt" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="ColumnQty" ColumnName="ColumnQty" />
+                <ScalarProperty Name="RowQty" ColumnName="RowQty" />
+                <ScalarProperty Name="QieShu" ColumnName="QieShu" />
+                <ScalarProperty Name="IDKeyWords" ColumnName="IDKeyWords" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="BoxQty" ColumnName="BoxQty" />
+                <ScalarProperty Name="BoxPCSQty" ColumnName="BoxPCSQty" />
+                <ScalarProperty Name="ProductModel" ColumnName="ProductModel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functions">
+            <EntityTypeMapping TypeName="SINOStockDBModel.Function">
+              <MappingFragment StoreEntitySet="Function">
+                <ScalarProperty Name="FunctionName" ColumnName="FunctionName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FunctionDetails">
+            <EntityTypeMapping TypeName="SINOStockDBModel.FunctionDetail">
+              <MappingFragment StoreEntitySet="FunctionDetail">
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QualityInfoes">
+            <EntityTypeMapping TypeName="SINOStockDBModel.QualityInfo">
+              <MappingFragment StoreEntitySet="QualityInfo">
+                <ScalarProperty Name="InfoType" ColumnName="InfoType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Remove_StockBox">
+            <EntityTypeMapping TypeName="SINOStockDBModel.Remove_StockBox">
+              <MappingFragment StoreEntitySet="Remove_StockBox">
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="StockLotOutID" ColumnName="StockLotOutID" />
+                <ScalarProperty Name="TrayID" ColumnName="TrayID" />
+                <ScalarProperty Name="isPrint" ColumnName="isPrint" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Remove_Tray">
+            <EntityTypeMapping TypeName="SINOStockDBModel.Remove_Tray">
+              <MappingFragment StoreEntitySet="Remove_Tray">
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SINOStockDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleDetail" ColumnName="RoleDetail" />
+                <ScalarProperty Name="RoleMain" ColumnName="RoleMain" />
+                <ScalarProperty Name="ModifyDt" ColumnName="ModifyDt" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="RuleName" ColumnName="RuleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RuleMapFunctions">
+            <EntityTypeMapping TypeName="SINOStockDBModel.RuleMapFunction">
+              <MappingFragment StoreEntitySet="RuleMapFunction">
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockBoxes">
+            <EntityTypeMapping TypeName="SINOStockDBModel.StockBox">
+              <MappingFragment StoreEntitySet="StockBox">
+                <ScalarProperty Name="CreateAccountID" ColumnName="CreateAccountID" />
+                <ScalarProperty Name="IsModify" ColumnName="IsModify" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="TrayID" ColumnName="TrayID" />
+                <ScalarProperty Name="isPrint" ColumnName="isPrint" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockDetails">
+            <EntityTypeMapping TypeName="SINOStockDBModel.StockDetail">
+              <MappingFragment StoreEntitySet="StockDetail">
+                <ScalarProperty Name="StockInImgInfo" ColumnName="StockInImgInfo" />
+                <ScalarProperty Name="IsTuiHuo" ColumnName="IsTuiHuo" />
+                <ScalarProperty Name="IsPaoGuangOverInfo" ColumnName="IsPaoGuangOverInfo" />
+                <ScalarProperty Name="DuMoAccountName" ColumnName="DuMoAccountName" />
+                <ScalarProperty Name="DuMoAccountID" ColumnName="DuMoAccountID" />
+                <ScalarProperty Name="PaoGuangAccountName" ColumnName="PaoGuangAccountName" />
+                <ScalarProperty Name="PaoGuangAccountID" ColumnName="PaoGuangAccountID" />
+                <ScalarProperty Name="JianBaoAccountName" ColumnName="JianBaoAccountName" />
+                <ScalarProperty Name="JianBaoAccountID" ColumnName="JianBaoAccountID" />
+                <ScalarProperty Name="IsFanGong" ColumnName="IsFanGong" />
+                <ScalarProperty Name="FanGongNum" ColumnName="FanGongNum" />
+                <ScalarProperty Name="IsHOLD" ColumnName="IsHOLD" />
+                <ScalarProperty Name="PaoGuangImgInfo" ColumnName="PaoGuangImgInfo" />
+                <ScalarProperty Name="PaoGuangInfo" ColumnName="PaoGuangInfo" />
+                <ScalarProperty Name="DuMoImgInfo" ColumnName="DuMoImgInfo" />
+                <ScalarProperty Name="DuMoInfo" ColumnName="DuMoInfo" />
+                <ScalarProperty Name="JianBaoImgInfo" ColumnName="JianBaoImgInfo" />
+                <ScalarProperty Name="JianBaoInfo" ColumnName="JianBaoInfo" />
+                <ScalarProperty Name="StockInInfo" ColumnName="StockInInfo" />
+                <ScalarProperty Name="StockBoxID" ColumnName="StockBoxID" />
+                <ScalarProperty Name="DuMoDT" ColumnName="DuMoDT" />
+                <ScalarProperty Name="DuMoNum" ColumnName="DuMoNum" />
+                <ScalarProperty Name="PaoGuangDT" ColumnName="PaoGuangDT" />
+                <ScalarProperty Name="PaoGuangNum" ColumnName="PaoGuangNum" />
+                <ScalarProperty Name="PaoGuangMian" ColumnName="PaoGuangMian" />
+                <ScalarProperty Name="PaoguangType" ColumnName="PaoguangType" />
+                <ScalarProperty Name="JianBaoDT" ColumnName="JianBaoDT" />
+                <ScalarProperty Name="JianBaoNum" ColumnName="JianBaoNum" />
+                <ScalarProperty Name="StockInDT" ColumnName="StockInDT" />
+                <ScalarProperty Name="IsPaoGuang" ColumnName="IsPaoGuang" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="StockLotID" ColumnName="StockLotID" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="GlassID" ColumnName="GlassID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockLots">
+            <EntityTypeMapping TypeName="SINOStockDBModel.StockLot">
+              <MappingFragment StoreEntitySet="StockLot">
+                <ScalarProperty Name="CreateAccountName" ColumnName="CreateAccountName" />
+                <ScalarProperty Name="CreateAccountID" ColumnName="CreateAccountID" />
+                <ScalarProperty Name="GuanKong" ColumnName="GuanKong" />
+                <ScalarProperty Name="TuiHuoCount" ColumnName="TuiHuoCount" />
+                <ScalarProperty Name="IsImport" ColumnName="IsImport" />
+                <ScalarProperty Name="ImageHOLD" ColumnName="ImageHOLD" />
+                <ScalarProperty Name="DetailInfoHOLD" ColumnName="DetailInfoHOLD" />
+                <ScalarProperty Name="IsDuMo" ColumnName="IsDuMo" />
+                <ScalarProperty Name="IsJianBao" ColumnName="IsJianBao" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="LotNo" ColumnName="LotNo" />
+                <ScalarProperty Name="ProModel" ColumnName="ProModel" />
+                <ScalarProperty Name="PCSQty" ColumnName="PCSQty" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockLotOuts">
+            <EntityTypeMapping TypeName="SINOStockDBModel.StockLotOut">
+              <MappingFragment StoreEntitySet="StockLotOut">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="LotNo" ColumnName="LotNo" />
+                <ScalarProperty Name="ProModel" ColumnName="ProModel" />
+                <ScalarProperty Name="PCSQty" ColumnName="PCSQty" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockOutDetails">
+            <EntityTypeMapping TypeName="SINOStockDBModel.StockOutDetail">
+              <MappingFragment StoreEntitySet="StockOutDetail">
+                <ScalarProperty Name="StockLotOutID" ColumnName="StockLotOutID" />
+                <ScalarProperty Name="StockBoxID" ColumnName="StockBoxID" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="GLassID" ColumnName="GLassID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockProDics">
+            <EntityTypeMapping TypeName="SINOStockDBModel.StockProDic">
+              <MappingFragment StoreEntitySet="StockProDic">
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="StockLotID" ColumnName="StockLotID" />
+                <ScalarProperty Name="PCSQty" ColumnName="PCSQty" />
+                <ScalarProperty Name="ProModel" ColumnName="ProModel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trays">
+            <EntityTypeMapping TypeName="SINOStockDBModel.Tray">
+              <MappingFragment StoreEntitySet="Tray">
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿<Window x:Class="SCG.SINOStock.Views.ToolEnterNoToPrint"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ToolEnterNoToPrint" Height="200" Width="420" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Border  BorderThickness="1,1,1,1" Background="#FFFFFFFF" BorderBrush="#CC000000" Height="200" VerticalAlignment="Bottom">
+        <!--CornerRadius="10,10,10,10"-->
+        <Border CornerRadius="8,8,8,8" Background="#99FFFFFF">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="349*"/>
+                    <ColumnDefinition Width="49*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </StackPanel>
+
+
+
+
+                <Label x:Name="TitleInfo" Grid.Row="0" Background="#1C86EE" MouseLeftButtonDown="Label_MouseLeftButtonDown" Content="{Binding Title}" Grid.ColumnSpan="2"/>
+                <!--<Label Grid.Row="0" Content="提示" Height="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10"/>-->
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6,5,6" Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <Button Content="取消" x:Name="btnCancel" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Command="{Binding CmdCancel}" Visibility="{Binding CancelVisibility}"/>
+                    <Button Content="打印" x:Name="btnOK" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="5,0,2,0" Command="{Binding CmdOK}"/>
+                </StackPanel>
+                <Label Content="{Binding Message}" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="{Binding Head}" HorizontalAlignment="Left" Margin="10,53,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding Content}" IsEnabled="{Binding txtIsEnabled}" Height="23" Margin="125,53,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="199"/>
+                <Button Grid.ColumnSpan="2" Content="修改" HorizontalAlignment="Left" Margin="333,57,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Command="{Binding CmdEnabled}" />
+            </Grid>
+        </Border>
+    </Border>
+</Window>

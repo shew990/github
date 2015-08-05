@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{751DF757-2637-4212-AEE4-617521B7EE00}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SCG.SINOStock</RootNamespace>
+    <AssemblyName>SCG.SINOStock</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>20140402021946479_easyicon_net_72.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF4">
+      <HintPath>..\..\..\..\..\中投资料\KnetSmartBox\KnetSmartBox\bin\Debug\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\..\..\..\项目或源程序\工作第二年\WPFDemo\WPFApplication\bin\Debug\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>C:\Users\ende\Desktop\新建文件夹\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\..\..\..\..\项目或源程序\工作第二年\WPFDemo\WPFApplication\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\..\..\..\项目或源程序\工作第二年\WPFDemo\WPFApplication\bin\Debug\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\..\..\..\项目或源程序\工作第二年\WPFDemo\WPFApplication\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="mindscape.wpfelements, Version=6.0.2561.23055, Culture=neutral, PublicKeyToken=0a92c4b7d9c14aa4, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\..\..\..\中投资料\KnetSmartBox\packages\MvvmLightLibs.3.1.1\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sell.xaml.cs">
+      <DependentUpon>Sell.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="doc\SINO二期项目应用程序开发合同1.2.doc" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCG.SINOStock.Common\SCG.SINOStock.Common.csproj">
+      <Project>{d20391b9-d5ba-4a0e-9ec2-7c5563ab1357}</Project>
+      <Name>SCG.SINOStock.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG.SINOStock.Infrastructure\SCG.SINOStock.Infrastructure.csproj">
+      <Project>{b6851ebd-e13f-4822-b8e0-570f7dfbb641}</Project>
+      <Name>SCG.SINOStock.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG.SINOStock.ServiceRule\SCG.SINOStock.ServiceRule.csproj">
+      <Project>{247999bc-85dc-4da1-bbd6-c4ab4067a0d3}</Project>
+      <Name>SCG.SINOStock.ServiceRule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG.SINOStock.ViewModels\SCG.SINOStock.ViewModels.csproj">
+      <Project>{0d7db653-c202-4564-9a23-7f4a351ac259}</Project>
+      <Name>SCG.SINOStock.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG.SINOStock.Views\SCG.SINOStock.Views.csproj">
+      <Project>{8fb7844c-2c03-432a-8cb3-841de9c2783a}</Project>
+      <Name>SCG.SINOStock.Views</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG.SINOStock.WCFService\SCG.SINOStock.WCFService.csproj">
+      <Project>{cac22309-f8a1-4c16-91b9-2fd30ba057e4}</Project>
+      <Name>SCG.SINOStock.WCFService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Assets\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\DetailStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\GlassButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\MainStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\chgPwd.png" />
+    <Resource Include="Assets\Images\close16.png" />
+    <Resource Include="Assets\Images\Home.png" />
+    <Resource Include="Assets\Images\iconAccount.png" />
+    <Resource Include="Assets\Images\iconAdvTransfer.png" />
+    <Resource Include="Assets\Images\iconAutoRoute.png" />
+    <Resource Include="Assets\Images\iconCar.png" />
+    <Resource Include="Assets\Images\iconCard.png" />
+    <Resource Include="Assets\Images\iconCashbox.png" />
+    <Resource Include="Assets\Images\iconDepartment.png" />
+    <Resource Include="Assets\Images\iconDevice.png" />
+    <Resource Include="Assets\Images\iconDispatchBox.png" />
+    <Resource Include="Assets\Images\iconEmergency.png" />
+    <Resource Include="Assets\Images\iconPolicy.png" />
+    <Resource Include="Assets\Images\iconRepairFlow.png" />
+    <Resource Include="Assets\Images\iconReport.png" />
+    <Resource Include="Assets\Images\iconRole.png" />
+    <Resource Include="Assets\Images\iconRoute.png" />
+    <Resource Include="Assets\Images\iconSchedule.png" />
+    <Resource Include="Assets\Images\iconTask.png" />
+    <Resource Include="Assets\Images\iconTaskManage.png" />
+    <Resource Include="Assets\Images\LoadingIMG.png" />
+    <Resource Include="Assets\Images\Logout.png" />
+    <Resource Include="Assets\Images\mainBG.jpg" />
+    <Resource Include="Assets\Images\mainLogo.png" />
+    <Resource Include="Assets\Images\mainLogo1.png" />
+    <Resource Include="Assets\Images\RouteAccount.png" />
+    <Resource Include="Assets\Images\RouteAccountEmpty.png" />
+    <Resource Include="Assets\Images\RouteCar.png" />
+    <Resource Include="Assets\Images\RouteCarEmpty.png" />
+    <Resource Include="Assets\Images\RouteNode.png" />
+    <Resource Include="Assets\Images\RouteNodeEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Icon\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\icon4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\AccountAdd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\add.png" />
+    <Resource Include="Assets\Images\del.png" />
+    <Resource Include="Assets\Images\edit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\query.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\loginBG.png" />
+    <Resource Include="Assets\Images\loginMainBG.png" />
+    <Resource Include="Assets\Images\loginMainTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="20140402021603488_easyicon_net_96.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="20140402021946479_easyicon_net_72.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="doc\测试描述文档.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

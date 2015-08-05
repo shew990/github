@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.StockLotMainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:pwdhelper="clr-namespace:SCG.SINOStock.Infrastructure;assembly=SCG.SINOStock.Infrastructure"
+                xmlns:commands="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+              xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:localConvert="clr-namespace:SCG.SINOStock.Common;assembly=SCG.SINOStock.Common"
+             mc:Ignorable="d" 
+            d:DesignHeight="600" d:DesignWidth="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=CmdPageLoad}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid IsEnabled="{Binding Path=IsBusy}">
+        <Grid.Resources>
+            <localConvert:DictValueConvert x:Key="BoolToName"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox   Grid.Row="1" Margin="4 4 4 4 ">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="时间"/>
+                <DatePicker Width="150" VerticalContentAlignment="Center" Text="{Binding StartDt,Mode=TwoWay}"/>
+                <Label Content="-"/>
+                <DatePicker Width="150" VerticalContentAlignment="Center" Text="{Binding EndDt,Mode=TwoWay}"/>
+                <Label Content="GlassID"/>
+                <TextBox Grid.Column="1" Width="150" VerticalContentAlignment="Center" Text="{Binding Path=GlassSearchId}"/>
+                <Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdPageLoad}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/query.png" Height="16" Width="16"/>
+                        <Label Content="查询" />
+                    </StackPanel>
+                </Button>
+            
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  Grid.Row="2" Margin="4 4 4 4 ">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Glass ID"/>
+                <TextBox Width="400" VerticalContentAlignment="Center"  >
+                </TextBox>
+                <CheckBox  HorizontalAlignment="Right" VerticalContentAlignment="Center" Content="显示全部" Margin="20,0,0,0"/>
+
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  Header="LotNo列表" Grid.Row="2" Margin="4 4 4 4 ">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="137*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DataGrid AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False"  IsReadOnly="True"  LoadingRow="DataGrid_LoadingRow"
+                    CanUserAddRows="False" Margin="0,4" Grid.Row="0" ItemsSource="{Binding StockLotCollection}" SelectedItem="{Binding CurrentStockLot}" Grid.ColumnSpan="2">
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Sorting">
+                            <commands:EventToCommand Command="{Binding Path=CmdSorting}" PassEventArgsToCommand="False"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                    <DataGrid.Columns>
+                        <!--<DataGridTextColumn Header="序号" Binding="{Binding  Path=DataContext.LineNumber,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Width="40" />-->
+                        <!--<DataGridTextColumn Header="序号" Binding="{Binding LoginNumber}" Width="120" />-->
+                        <DataGridTextColumn Header="LotNo" Binding="{Binding LotNo}" Width="*" />
+                        <DataGridTextColumn Header="减薄" Binding="{Binding Path=IsJianBao,Converter={StaticResource BoolToName},ConverterParameter=BoolConvertYesOrNo}" Width="60" />
+                        <DataGridTextColumn Header="镀膜" Binding="{Binding Path=IsDuMo,Converter={StaticResource BoolToName},ConverterParameter=BoolConvertYesOrNo}" Width="60" />
+                        <DataGridTextColumn Header="需品质信息" Binding="{Binding DetailInfoHOLD}" Width="120" />
+                        <DataGridTextColumn Header="需图形选择" Binding="{Binding ImageHOLD}" Width="120" />
+                        <DataGridTextColumn Header="型号" Binding="{Binding ProModel}" Width="120" />
+                        <DataGridTextColumn Header="管控" Binding="{Binding GuanKong}" Width="120" />
+                        <DataGridTextColumn Header="创建时间" Binding="{Binding CreateDt,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="140" />
+                        <DataGridTemplateColumn Header="操作" Width="365">
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Visibility="{Binding Path=DataContext.StockInVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="入库" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdGotoStockIn,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.StockIn_NOVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="入库(无)" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdGotoStockIn_NO,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.JianBaoVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="减薄" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdGotoJianBao,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.PaoGuangVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="抛光" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdGotoPaoGuang,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.DuMoVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="镀膜" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdGotoDuMo,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.DetailVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="GlassID明细" Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdDetail,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Visibility="{Binding Path=DataContext.ZhuanYiVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Content="转移GlassID" Margin="2,0,2,0" Command="{Binding Path=DataContext.HOLDAllToNewStockLot,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Content=" 删除 " Margin="2,0,2,0" Command="{Binding Path=DataContext.CmdDelete,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" Visibility="{Binding Path=DataContext.DeleteVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                    </StackPanel>
+
+                                </DataTemplate>
+
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Visibility="{Binding Path=IsVisibility}" VerticalAlignment="Center" Grid.Row="2">
+            <TextBlock HorizontalAlignment="Center" FontSize="14">LOTNO 数据正在加载中...</TextBlock>
+            <Image Width="255" Height="39" Source="../Assets/Images/LoadingIMG.png"/>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

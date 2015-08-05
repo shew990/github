@@ -1,0 +1,54 @@
+﻿<Window x:Class="SCG.SINOStock.Views.ToolScanGlassID_PaoGuang"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:ToolView="clr-namespace:SCG.SINOStock.Views.ToolView"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="抛光扫描GlassID" Height="600" Width="900" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+    <Border  BorderThickness="1,1,1,1" Background="#FFFFFFFF" BorderBrush="#CC000000" Height="600"  VerticalAlignment="Bottom">
+        <!--CornerRadius="10,10,10,10"-->
+        <Border CornerRadius="8,8,8,8" Background="#99FFFFFF">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18"/>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+                </StackPanel>
+
+
+
+
+                <Label x:Name="TitleInfo" Grid.Row="0" Background="#1C86EE" MouseLeftButtonDown="Label_MouseLeftButtonDown" Content="抛光扫描GlassID"/>
+                <!--<Label Grid.Row="0" Content="提示" Height="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10"/>-->
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Orientation="Horizontal">
+                    <Button Content="确定抛光" x:Name="btnOK" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnOK_Click" />
+
+                </StackPanel>
+                <Label Content="品质信息:" HorizontalAlignment="Left" Margin="26,67,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="抛光机号:" HorizontalAlignment="Left" Margin="26,28,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="92,28,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Text="{Binding CurrentStockDetail.PaoGuangNum}"/>
+                <Label Content="抛光时间:" HorizontalAlignment="Left" Margin="394,28,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="5.607,-0.88"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="489,30,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" Text="{Binding CurrentStockDetail.PaoGuangDT, StringFormat=yyyy-MM-dd HH:mm:ss}"/>
+                <Label Content="是否返工:" HorizontalAlignment="Left" Margin="394,67,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <CheckBox Content="返工" HorizontalAlignment="Left" Margin="489,73,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.649,2.933"  IsChecked="{Binding CurrentStockDetail.IsFanGong}"/>
+                <!--<Button x:Name="abc" HorizontalAlignment="Left" Margin="66,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" RenderTransformOrigin="4.125,1.368" Height="27">
+                    <CheckBox Content="EF"/>
+                </Button>-->
+                <ToolView:CheckBoxButtonList IsEnabled="{Binding IsImgHOLD}" x:Name="cbList" HorizontalAlignment="Left" Height="352" Margin="26,182,0,0" Grid.Row="1" VerticalAlignment="Top" Width="832"/>
+                <ToolView:CheckBoxList x:Name="cbInfoList" HorizontalAlignment="Left" Margin="92,67,0,0" Grid.Row="1" VerticalAlignment="Top" Height="80" Width="257"/>
+                <Label Content="HOLD状态:" HorizontalAlignment="Left" Margin="384,107,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.563,1.52"/>
+                <CheckBox Content="HOLD" HorizontalAlignment="Left" Margin="489,113,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding IsHOLD}" RenderTransformOrigin="0.519,-0.733"/>
+
+            </Grid>
+        </Border>
+    </Border>
+</Window>

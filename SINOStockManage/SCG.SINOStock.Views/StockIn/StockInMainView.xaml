@@ -1,0 +1,180 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ms="http://namespaces.mindscape.co.nz/wpf" x:Class="SCG.SINOStock.Views.StockInMainView" 
+       xmlns:pwdhelper="clr-namespace:SCG.SINOStock.Infrastructure;assembly=SCG.SINOStock.Infrastructure"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:commands="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+          xmlns:localConvert="clr-namespace:SCG.SINOStock.Common;assembly=SCG.SINOStock.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=CmdPageLoad}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid IsEnabled="{Binding Path=IsBusy}">
+        <Grid.Resources>
+            <localConvert:DictValueConvert x:Key="StatusDictToName"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox   Grid.Row="0" Margin="4 4 4 4 ">
+            <StackPanel Margin="0,5,0,0" Orientation="Horizontal" VerticalAlignment="Center" >
+                <!--<Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdNewLotNo}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/query.png" Height="16" Width="16"/>
+                        <Label Content="新建" />
+                    </StackPanel>
+                </Button>-->
+                <!--<Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdEndLotNo}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/query.png" Height="16" Width="16"/>
+                        <Label Content="结束" />
+                    </StackPanel>
+                </Button>-->
+                <!--<Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdPageLoad}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/query.png" Height="16" Width="16"/>
+                        <Label Content="删除LOT数据" />
+                    </StackPanel>
+                </Button>-->
+                <Button   Margin="4 0 0 0" Cursor="Hand" Command="{Binding CmdExprotExcel}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/query.png" Height="16" Width="16"/>
+                        <Label Content="导出EXCEL" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  Grid.Row="1">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                <Label Content="LOT NO:"/>
+                <TextBox x:Name="txtLOTNO" Width="300" VerticalContentAlignment="Center" pwdhelper:TextBoxHelper.Password="{Binding Path=CurrentStockLot.LotNo,Mode=TwoWay}" MaxLength="50" IsEnabled="{Binding TXTLOTNOISEnabled}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="KeyDown">
+                            <commands:EventToCommand Command="{Binding Path=CmdLotOperater}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+
+                <Label Content="型号选择:" Margin="5,0,0,0"/>
+                <TextBox Width="120"  Text="{Binding CurrentStockLot.ProModel}"  IsEnabled="False"/>
+
+                <Label Content="   工艺流程:" Margin="5,0,0,0"/>
+                <CheckBox Content="减薄  " VerticalContentAlignment="Center" IsChecked="{Binding CurrentStockLot.IsJianBao}" IsEnabled="{Binding ControlsEnabled}"/>
+                <CheckBox Content="镀膜   " VerticalContentAlignment="Center" IsChecked="{Binding CurrentStockLot.IsDuMo}" IsEnabled="{Binding ControlsEnabled}"/>
+                <Button Content="结束入库" Margin="20,0,0,0" Command="{Binding CmdEndLotNo}" Visibility="{Binding EndStockLotVisibility}"/>
+
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  Grid.Row="2" Margin="4 4 4 4 " >
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="品质信息开关:"/>
+                <CheckBox Content="入库  " VerticalContentAlignment="Center" IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding StockInHOLD}"/>
+                <CheckBox Content="减薄  " VerticalContentAlignment="Center" IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding JianBaoHOLD}"  />
+                <CheckBox Content="抛光  " VerticalContentAlignment="Center" IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding PaoGuangHOLD}" />
+                <CheckBox Content="镀膜  " VerticalContentAlignment="Center" IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding DuMoHOLD}"    />
+                <Label Content="       图形选择开关:"/>
+                <CheckBox Content="减薄  " VerticalContentAlignment="Center"  IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding JianBaoImgHOLD}" />
+                <CheckBox Content="抛光  " VerticalContentAlignment="Center"  IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding PaoGuangImgHOLD}"/>
+                <CheckBox Content="镀膜  " VerticalContentAlignment="Center"  IsEnabled="{Binding ControlsEnabled}" IsChecked="{Binding DuMoImgHOLD}"    />
+                <Label Content="入库数量:" Margin="5,0,0,0" />
+                <TextBox Width="50" VerticalContentAlignment="Center" pwdhelper:TextBoxHelper.Password="{Binding Path=CurrentStockLot.PCSQty,Mode=TwoWay}" IsEnabled="{Binding ControlsEnabled}">
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="KeyDown">
+                            <commands:EventToCommand Command="{Binding Path=CmdProDicOperater}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                </TextBox>
+
+                <Label Content="(PCS)"/>
+                <Label Content="剩余入库数：   " Margin="5,0,0,0"/>
+                <Label Content="{Binding SurQty}" Margin="5,0,0,0"/>
+                <Label Content="P CS" Margin="5,0,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  Grid.Row="3" Margin="4 4 4 4 ">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Glass ID"/>
+                <TextBox x:Name="txtGlassID" Width="300" VerticalContentAlignment="Center" pwdhelper:TextBoxHelper.Password="{Binding Path=GlassID,Mode=TwoWay}" IsEnabled="True">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="KeyDown">
+                            <commands:EventToCommand Command="{Binding Path=CmdDetailOperater}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <Label Content="总入库数：   "/>
+                <Label Content="{Binding SumQty}"/>
+                <Label Content="P CS"/>
+                <Label Content="{Binding HOLDQty}"/>
+                <CheckBox  HorizontalAlignment="Right" VerticalContentAlignment="Center" Content="显示全部"  Margin="50,0,0,0" Command="{Binding CmdShowAll}" IsChecked="{Binding IsCheckAll}"/>
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox  Header="GlassID列表" Grid.Row="4" Margin="4 4 4 4 ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DataGrid AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False" IsReadOnly="True" LoadingRow="DataGrid_LoadingRow"
+                    CanUserAddRows="False" Margin="0,4"  Grid.Row="0"  ItemsSource="{Binding CurrentStockLot.StockDetails}" SelectedItem="{Binding CurrentDetail}">
+                
+                    <DataGrid.Columns>
+                       
+                        <DataGridTextColumn Header="GlassID" Binding="{Binding GlassID}" Width="*" />
+                        <DataGridTextColumn Header="型号" Binding="{Binding StockLot.ProModel}" Width="180" />
+                        <DataGridTextColumn Header="扫描人" Binding="{Binding AccountName}" Width="180" />
+                        <DataGridTextColumn Header="状态" Binding="{Binding Path=Status,Converter={StaticResource StatusDictToName},ConverterParameter=StockDetailStatus}" Width="120" />
+                        <DataGridTextColumn Header="HOLD状态" Binding="{Binding Path=IsHOLD,Converter={StaticResource StatusDictToName},ConverterParameter=BoolConvertYesOrNo}" Width="120"/>
+                        <DataGridTextColumn Header="扫描时间" Binding="{Binding StockInDT,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="180" />
+                        <!--<DataGridTemplateColumn Header="选中" SortMemberPath="IsSelected" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IsSelected,  UpdateSourceTrigger=PropertyChanged}"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Command="{Binding Path=DataContext.SelectMenuItemCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+                        <DataGridTemplateColumn Header="操作" Width="120">
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Cursor="Hand" Content="解除HOLD" Visibility="{Binding Path=DataContext.HOLDVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" IsEnabled="{Binding Path=IsHOLD}" Command="{Binding Path=DataContext.CmdModifyHOLD,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+                                        <Button Cursor="Hand" Content="退货" Visibility="{Binding Path=DataContext.HOLDVisibility,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" IsEnabled="{Binding Path=IsHOLD}" Command="{Binding Path=DataContext.CmdTuiHuo,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}"/>
+
+                                    </StackPanel>
+
+                                </DataTemplate>
+
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Visibility="{Binding Path=IsVisibility}" VerticalAlignment="Center" Grid.Row="4">
+            <TextBlock HorizontalAlignment="Center" FontSize="14">必要的数据正在加载中...</TextBlock>
+            <Image Width="255" Height="39" Source="../Assets/Images/LoadingIMG.png"/>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

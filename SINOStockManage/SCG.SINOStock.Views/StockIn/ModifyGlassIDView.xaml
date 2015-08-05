@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.ModifyGlassIDView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+               xmlns:tbhelper="clr-namespace:SCG.SINOStock.Infrastructure;assembly=SCG.SINOStock.Infrastructure"
+               xmlns:commands="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+                xmlns:pwdhelper="clr-namespace:SCG.SINOStock.Infrastructure;assembly=SCG.SINOStock.Infrastructure"
+
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1">
+            <StackPanel Width="1000">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="GlassID" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Style="{StaticResource detailTextBoxStyle1}"  pwdhelper:TextBoxHelper.Password="{Binding CurrentStockDetail.GlassID, Mode=TwoWay}"  IsEnabled="{Binding IsProModelEnb}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="KeyDown">
+                                <commands:EventToCommand Command="{Binding CmdDetailOperater}" PassEventArgsToCommand="True"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <Label Content="是否需要抛光" Grid.Row="0" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <CheckBox Grid.Column="3" Grid.Row="0" Content="抛光" VerticalAlignment="Center" IsChecked="{Binding CurrentStockDetail.IsPaoGuang}"/>
+                    <Label Content="减薄槽号" Grid.Row="0" Grid.Column="4" Style="{StaticResource detailLableStyle}" />
+                    <TextBox Grid.Column="5" Grid.Row="0" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.JianBaoNum}"/>
+
+                    <Label Content="抛光机台号" Grid.Row="1" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.PaoGuangNum}"/>
+                    <Label Content="抛光种类" Grid.Row="1" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="3" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.PaoguangType}" RenderTransformOrigin="1.96,-1.5"/>
+
+                    <Label Content="抛光面" Grid.Row="1" Grid.Column="4" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="5" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.PaoGuangMian}"/>
+                    <Label Content="镀膜机台号" Grid.Row="2" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.DuMoNum}"/>
+                    <Label Content="入库品质信息" Grid.Row="2" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="3" Grid.Row="2" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.StockInInfo}" Height="60"/>
+                    <Label Content="减薄品质信息" Grid.Row="2" Grid.Column="4" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="5" Grid.Row="2" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.JianBaoInfo}" Height="60"/>
+                    <Label Content="减薄品质图片信息" Grid.Row="3" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.JianBaoImgInfo}" Height="60"/>
+
+                    <Label Content="抛光品质信息" Grid.Row="3" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="3" Grid.Row="3" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.PaoGuangInfo}" Height="60"/>
+
+                    <Label Content="抛光品质图片信息" Grid.Row="3" Grid.Column="4" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="5" Grid.Row="3" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.PaoGuangImgInfo}" Height="60"/>
+
+                    <Label Content="抛光返工次数" Grid.Row="4" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.FanGongNum}"/>
+
+                    <Label Content="是否返工" Grid.Row="4" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <CheckBox Grid.Column="3" Grid.Row="4"  VerticalAlignment="Center" Content="返工" IsChecked="{Binding CurrentStockDetail.IsFanGong}"/>
+
+                    <Label Content="是否HOLD" Grid.Row="4" Grid.Column="4" Style="{StaticResource detailLableStyle}"/>
+                    <CheckBox IsEnabled="{Binding HOLDIsEnabled}" Grid.Column="5" Grid.Row="4"  Content="HOLD" VerticalAlignment="Center" IsChecked="{Binding CurrentStockDetail.IsHOLD}"/>
+
+                    <Label Content="镀膜品质信息" Grid.Row="5" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.DuMoInfo}" Height="60"/>
+                    <Label Content="镀膜品质图片信息" Grid.Row="5" Grid.Column="2" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="3" Grid.Row="5" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.DuMoImgInfo}" Height="60"/>
+                    <Label Content="是否进行了抛光" Grid.Row="5" Grid.Column="4" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="5" Grid.Row="5" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.IsPaoGuangOverInfo}" />
+                    <Label Content="抛光人员" Grid.Row="6" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="6" Style="{StaticResource detailTextBoxStyle}" Text="{Binding CurrentStockDetail.PaoGuangAccountName}" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="替换GlassID" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdReplaceGlassID}" Visibility="{Binding ReplaceVisibility}"/>
+                <Button Content="删除" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdDelete}" Visibility="{Binding DeleteVisibility}"/>
+                <Button Content="确认保存" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdSave}"/>
+                <Button Content="返回主界面" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

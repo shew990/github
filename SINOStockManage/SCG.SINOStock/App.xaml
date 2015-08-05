@@ -1,0 +1,16 @@
+﻿<Application x:Class="SCG.SINOStock.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets/MainStyle.xaml"/>
+                <!--<ResourceDictionary Source="Assets/DataGridStyle.xaml"/>-->
+                <ResourceDictionary Source="Assets/GlassButtonStyle.xaml"/>
+                <ResourceDictionary Source="Assets/DetailStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

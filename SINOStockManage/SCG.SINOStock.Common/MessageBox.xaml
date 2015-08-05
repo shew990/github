@@ -1,0 +1,46 @@
+﻿<Window x:Class="SCG.SINOStock.Common.MessageBox"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   
+        Title="ToolMessageBox" Height="120" Width="350" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MaxHeight="120" MaxWidth="350">
+    <Border Name="boardMain"  BorderThickness="1,1,1,1" Background="#FFFFFFFF" BorderBrush="#CC000000" Height="120" VerticalAlignment="Bottom">
+        <!--CornerRadius="10,10,10,10"-->
+        <Border CornerRadius="8,8,8,8" Background="#99FFFFFF">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <ScrollViewer Grid.Row="1" Background="Red"  VerticalScrollBarVisibility="Auto" >
+                    <StackPanel >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Source="Assets/Images/close16.png" Height="20" Width="20" MouseDown="Image_MouseDown"/>
+                            <TextBlock x:Name="MessageInfo"  Margin="10,10,10,10" Text="请输入验证码！" Foreground="White" TextWrapping="Wrap" FontSize="18" Grid.ColumnSpan="2"  />
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+               
+
+
+
+
+                <Label x:Name="TitleInfo" Grid.Row="0" Background="#1C86EE" MouseLeftButtonDown="Label_MouseLeftButtonDown" Content="提示"  Foreground="Red" FontWeight="Bold"/>
+                <Image Grid.Row="0" HorizontalAlignment="Right" Source="Assets/Images/close16.png" Height="20" Width="20" MouseDown="Image_MouseDown"/>
+                <!--<Label Grid.Row="0" Content="提示" Height="" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="10"/>-->
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Orientation="Horizontal">
+                    <Button Content="复制信息" x:Name="btnCopy" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnCopy_Click"/>
+                    <Button Content="确定" x:Name="btnOK" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnOK_Click"/>
+                    <Button Content="是" x:Name="btnYes" HorizontalAlignment="Left" Cursor="Hand"  Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnYes_Click"/>
+                    <Button Content="否" x:Name="btnNo" HorizontalAlignment="Left" Cursor="Hand"  Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnNo_Click"/>
+                    <Button Content="取消" x:Name="btnCancel" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="2,0,2,0" Click="btnCancel_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

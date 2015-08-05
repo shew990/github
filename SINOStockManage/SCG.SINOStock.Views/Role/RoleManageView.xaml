@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.RoleManageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="View_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1">
+            <StackPanel Width="500">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="角色编号" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Style="{StaticResource detailTextBoxStyle}"/>
+                    <Label Content="角色名称" Grid.Row="1" Grid.Column="0" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource detailTextBoxStyle}"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="确认保存" Style="{StaticResource detailBtnStyle}"/>
+                <Button Content="返回列表" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

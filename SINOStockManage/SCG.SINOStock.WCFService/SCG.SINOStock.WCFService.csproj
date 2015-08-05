@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CAC22309-F8A1-4C16-91B9-2FD30BA057E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SCG.SINOStock.WCFService</RootNamespace>
+    <AssemblyName>SCG.SINOStock.WCFService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ISINOStockServiceProxy.cs" />
+    <Compile Include="ISINOStockServiceProxy.StockLot.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\SINOStockService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SINOStockServiceProxy.Account.cs" />
+    <Compile Include="SINOStockServiceProxy.cs" />
+    <Compile Include="SINOStockServiceProxy.Formwork.cs" />
+    <Compile Include="SINOStockServiceProxy.QualiityInfo.cs" />
+    <Compile Include="SINOStockServiceProxy.Role.cs" />
+    <Compile Include="SINOStockServiceProxy.StockBox.cs" />
+    <Compile Include="SINOStockServiceProxy.Tray.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SCG.SINOStock\app.config">
+      <Link>app.config</Link>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.Account.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.FormWork.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.QualityInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.Role.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockBox.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockLot.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockLotOut.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockOutDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockOutQtyHelper.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.StockProDic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SCG.SINOStock.WCFService.SINOStockService.Tray.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SINOStockService\SINOStockService.wsdl" />
+    <None Include="Service References\SINOStockService\SINOStockService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SINOStockService\SINOStockService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SINOStockService\SINOStockService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SINOStockService\SINOStockService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SINOStockService\SINOStockService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SINOStockService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SINOStockService\SINOStockService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SINOStockService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SINOStockService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SINOStockService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

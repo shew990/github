@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.ImportStockLotView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=CmdPageLoad}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1">
+            <StackPanel Width="800">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+
+                    </Grid.RowDefinitions>
+                    <!--第一列-->
+                    <Label Content="LOT NO" Style="{StaticResource detailLableStyle}"/>
+                    <TextBox Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource detailTextBoxStyle}" Width="600" Text="{Binding LotNo}"/>
+
+                    <Label Content="型号选择" Style="{StaticResource detailLableStyle}" Grid.Row="1"/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" ItemsSource="{Binding FormWorkCollection}" SelectedItem="{Binding Path=CurrentFormwork,Mode=TwoWay}" />
+
+                    <Label Content="入库方式" Style="{StaticResource detailLableStyle}" Grid.Row="2"/>
+                    <StackPanel  Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" >
+                        <RadioButton Content="客户列表              " IsChecked="{Binding IsImport}"/>
+                        <RadioButton Content="关键字模版" IsChecked="{Binding IsFormwork}"/>
+                    </StackPanel>
+
+                    <Label Content="选择Excel" Style="{StaticResource detailLableStyle}" Grid.Row="3"/>
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
+                        <TextBox Style="{StaticResource detailTextBoxStyle}" IsEnabled="False" Text="{Binding FileName}"/>
+                        <Button Style="{StaticResource detailBtnStyle}" Content="选择..." Command="{Binding CmdSelectFileName}" IsEnabled="{Binding IsImport}"/>
+                    </StackPanel>
+
+                    <Label Content="入库数量" Style="{StaticResource detailLableStyle}" Grid.Row="4"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource detailTextBoxStyle}"  Text="{Binding StockInQty}" IsEnabled="{Binding IsFormwork}"/>
+                    <!--第二列-->
+                    <Label Grid.Row="1" Grid.Column="2" Content="工艺流程" Style="{StaticResource detailLableStyle}" HorizontalAlignment="Stretch" Margin="52,18,10,18" />
+                    <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center"  >
+                        <CheckBox Content="减薄                     "  IsChecked="{Binding IsJianBao}"/>
+                        <CheckBox Content="镀膜   " IsChecked="{Binding IsDuMo}"/>
+                    </StackPanel>
+                    <Label Grid.Row="2" Grid.Column="2" Content="品质信息开关" Style="{StaticResource detailLableStyle}" />
+                    <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center"  >
+                        <CheckBox Content="入库     " IsChecked="{Binding StockInHOLD}"/>
+                        <CheckBox Content="减薄    "  IsChecked="{Binding JianBaoHOLD}" IsEnabled="{Binding IsJianBao}"/>
+                        <CheckBox Content="抛光    "  IsChecked="{Binding PaoGuangHOLD}"/>
+                        <CheckBox Content="镀膜  "    IsChecked="{Binding DuMoHOLD}" IsEnabled="{Binding IsDuMo}"/>
+                    </StackPanel>
+
+                    <Label Grid.Row="3" Grid.Column="2" Content="图形选择开关" Style="{StaticResource detailLableStyle}" />
+                    <StackPanel  Grid.Row="3" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center"  >
+                        <CheckBox Content="减薄     " IsChecked="{Binding JianBaoImgHOLD}" IsEnabled="{Binding JianBaoHOLD}"/>
+                        <CheckBox Content="抛光    " IsChecked="{Binding PaoGuangImgHOLD}" IsEnabled="{Binding PaoGuangHOLD}"/>
+                        <CheckBox Content="镀膜  " IsChecked="{Binding DuMoImgHOLD}" IsEnabled="{Binding DuMoHOLD}"/>
+                    </StackPanel>
+                    <Label  Grid.Row="4" Grid.Column="2" Content="管控设置" Style="{StaticResource detailLableStyle}"/>
+                    <StackPanel Grid.Row="4" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" >
+                        <RadioButton Content="单独管控品 " IsChecked="{Binding GuanKongSingle}" />
+                        <RadioButton Content="可混批" IsChecked="{Binding GuanKongMulti}" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Margin="0,0,0,0">
+            <StackPanel Style="{StaticResource StackPanelBottomStyle}">
+                <Button Content="确定新建" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdSave}"/>
+                <Button Content="返回主界面" Style="{StaticResource detailBtnStyle}" Command="{Binding CmdGotoList}"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>

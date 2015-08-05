@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SINOStockService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:18008/SINOStockService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:18008/SINOStockService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:18008/SINOStockService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" />
+      <xsd:import schemaLocation="http://localhost:18008/SINOStockService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:18008/SINOStockService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SCG.SINOStock.WCF" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISINOStockService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_Login_Ex_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login_Ex" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_Login_Ex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Login_ExResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetAccountList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetAccountList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAccount" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyAccount" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelAccount" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangePwd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePwd" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangePwd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePwdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ExitCurrentAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitCurrentAccount" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ExitCurrentAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExitCurrentAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetFormWorkList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormWorkList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetFormWorkList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormWorkListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddFormWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFormWork" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddFormWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFormWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyFormWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyFormWork" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyFormWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyFormWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelFormWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelFormWork" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelFormWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelFormWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetProductStrList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductStrList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetProductStrList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductStrListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetFormWorkByProModel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormWorkByProModel" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetFormWorkByProModel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormWorkByProModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetAccountById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountById" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetAccountById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetQualityInfoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualityInfoList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetQualityInfoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualityInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddQualityInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddQualityInfo" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddQualityInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddQualityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyQualityInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyQualityInfo" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyQualityInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyQualityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelQualityInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelQualityInfo" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelQualityInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelQualityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetRoleList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetRoleList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRole" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyRole" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelRole" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockBox_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockBox" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockBox_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockBoxResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockBoxToBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockBoxToBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockBoxToBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockBoxToBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetBoxListByDt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBoxListByDt" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetBoxListByDt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBoxListByDtResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxStockBox_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxStockBox" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxStockBox_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxStockBoxResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyStockBox_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStockBox" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyStockBox_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStockBoxResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxBarCode_Ex_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxBarCode_Ex" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxBarCode_Ex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxBarCode_ExResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxStockBox_Ex_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxStockBox_Ex" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxStockBox_Ex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxStockBox_ExResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangeBoxBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBoxBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangeBoxBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBoxBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyBoxBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyBoxBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyBoxBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyBoxBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStocBoxkEntityByIsUnPrint_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStocBoxkEntityByIsUnPrint" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStocBoxkEntityByIsUnPrint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStocBoxkEntityByIsUnPrintResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockDetailList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockDetailList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockDetailList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockDetailListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockDetail" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyStockDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStockDetail" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyStockDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStockDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockDetail" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_UpdateStockDetailStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStockDetailStatus" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_UpdateStockDetailStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStockDetailStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetailStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetailStatus" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetailStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetailStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetailStatus_Out_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetailStatus_Out" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetailStatus_Out_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetailStatus_OutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockDetailByGlassID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockDetailByGlassID" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockDetailByGlassID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockDetailByGlassIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetail_In_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetail_In" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetail_In_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetail_InResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetail_In_Ex_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetail_In_Ex" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckStockDetail_In_Ex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockDetail_In_ExResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelStockDetailAndTuihuoCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelStockDetailAndTuihuoCount" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DelStockDetailAndTuihuoCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelStockDetailAndTuihuoCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotOutEntityByLotNo_Out_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotOutEntityByLotNo_Out" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotOutEntityByLotNo_Out_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotOutEntityByLotNo_OutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotOutEntityByLotNo_Out_NO_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotOutEntityByLotNo_Out_NO" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotOutEntityByLotNo_Out_NO_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotOutEntityByLotNo_Out_NOResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_EndStockLotOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndStockLotOut" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_EndStockLotOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndStockLotOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockLotOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockLotOut" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockLotOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockLotOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckLotNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLotNo" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_CheckLotNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLotNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetNoStockOutGlass_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoStockOutGlass" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetNoStockOutGlass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoStockOutGlassResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotOutList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotOutList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotOutList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotOutListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNo" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNo_Ex_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNo_Ex" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNo_Ex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNo_ExResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityListByLotNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityListByLotNo" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityListByLotNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityListByLotNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockLot_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockLot" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockLot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockLotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_EndStockLot_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndStockLot" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_EndStockLot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndStockLotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockLot_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockLot" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockLot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockLotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNo_Out_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNo_Out" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNo_Out_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNo_OutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotList_Two_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotList_Two" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotList_Two_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotList_TwoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_HOLDAllToNewStockLot_InputMessage">
+    <wsdl:part name="parameters" element="tns:HOLDAllToNewStockLot" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_HOLDAllToNewStockLot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HOLDAllToNewStockLotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockOutQtys_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockOutQtys" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockOutQtys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockOutQtysResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNoTotal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNoTotal" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockLotEntityByLotNoTotal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockLotEntityByLotNoTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockOutDetailList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockOutDetailList" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockOutDetailList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockOutDetailListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockOutDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockOutDetail" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockOutDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockOutDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockoutDetailByGlassID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockoutDetailByGlassID" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetStockoutDetailByGlassID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockoutDetailByGlassIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyStockOutDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStockOutDetail" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyStockOutDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStockOutDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockOutDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockOutDetail" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_DeleteStockOutDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStockOutDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockProDic_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockProDic" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddStockProDic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStockProDicResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetProDicByProAndLotID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProDicByProAndLotID" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetProDicByProAndLotID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProDicByProAndLotIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddTray_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTray" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_AddTray_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetTrayByBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrayByBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetTrayByBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrayByBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetTrayMaxBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrayMaxBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetTrayMaxBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrayMaxBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetTrayListByDt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrayListByDt" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetTrayListByDt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrayListByDtResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxTray_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxTray" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_GetMaxTray_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxTrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyTray_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTray" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ModifyTray_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangeTryBarCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeTryBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangeTryBarCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeTryBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISINOStockService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/Login" message="tns:ISINOStockService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/LoginResponse" message="tns:ISINOStockService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Ex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/Login_Ex" message="tns:ISINOStockService_Login_Ex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/Login_ExResponse" message="tns:ISINOStockService_Login_Ex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetAccountList" message="tns:ISINOStockService_GetAccountList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetAccountListResponse" message="tns:ISINOStockService_GetAccountList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddAccount" message="tns:ISINOStockService_AddAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddAccountResponse" message="tns:ISINOStockService_AddAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyAccount" message="tns:ISINOStockService_ModifyAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyAccountResponse" message="tns:ISINOStockService_ModifyAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DelAccount" message="tns:ISINOStockService_DelAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DelAccountResponse" message="tns:ISINOStockService_DelAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePwd">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ChangePwd" message="tns:ISINOStockService_ChangePwd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ChangePwdResponse" message="tns:ISINOStockService_ChangePwd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExitCurrentAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ExitCurrentAccount" message="tns:ISINOStockService_ExitCurrentAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ExitCurrentAccountResponse" message="tns:ISINOStockService_ExitCurrentAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormWorkList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetFormWorkList" message="tns:ISINOStockService_GetFormWorkList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetFormWorkListResponse" message="tns:ISINOStockService_GetFormWorkList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFormWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddFormWork" message="tns:ISINOStockService_AddFormWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddFormWorkResponse" message="tns:ISINOStockService_AddFormWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyFormWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyFormWork" message="tns:ISINOStockService_ModifyFormWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyFormWorkResponse" message="tns:ISINOStockService_ModifyFormWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelFormWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DelFormWork" message="tns:ISINOStockService_DelFormWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DelFormWorkResponse" message="tns:ISINOStockService_DelFormWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductStrList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetProductStrList" message="tns:ISINOStockService_GetProductStrList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetProductStrListResponse" message="tns:ISINOStockService_GetProductStrList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormWorkByProModel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetFormWorkByProModel" message="tns:ISINOStockService_GetFormWorkByProModel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetFormWorkByProModelResponse" message="tns:ISINOStockService_GetFormWorkByProModel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DoWork" message="tns:ISINOStockService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DoWorkResponse" message="tns:ISINOStockService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetAccountById" message="tns:ISINOStockService_GetAccountById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetAccountByIdResponse" message="tns:ISINOStockService_GetAccountById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualityInfoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetQualityInfoList" message="tns:ISINOStockService_GetQualityInfoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetQualityInfoListResponse" message="tns:ISINOStockService_GetQualityInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddQualityInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddQualityInfo" message="tns:ISINOStockService_AddQualityInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddQualityInfoResponse" message="tns:ISINOStockService_AddQualityInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyQualityInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyQualityInfo" message="tns:ISINOStockService_ModifyQualityInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyQualityInfoResponse" message="tns:ISINOStockService_ModifyQualityInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelQualityInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DelQualityInfo" message="tns:ISINOStockService_DelQualityInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DelQualityInfoResponse" message="tns:ISINOStockService_DelQualityInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetRoleList" message="tns:ISINOStockService_GetRoleList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetRoleListResponse" message="tns:ISINOStockService_GetRoleList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddRole" message="tns:ISINOStockService_AddRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddRoleResponse" message="tns:ISINOStockService_AddRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyRole" message="tns:ISINOStockService_ModifyRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyRoleResponse" message="tns:ISINOStockService_ModifyRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DelRole" message="tns:ISINOStockService_DelRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DelRoleResponse" message="tns:ISINOStockService_DelRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStockBox">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddStockBox" message="tns:ISINOStockService_AddStockBox_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddStockBoxResponse" message="tns:ISINOStockService_AddStockBox_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockBoxToBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockBoxToBarCode" message="tns:ISINOStockService_GetStockBoxToBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockBoxToBarCodeResponse" message="tns:ISINOStockService_GetStockBoxToBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxBarCode" message="tns:ISINOStockService_GetMaxBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxBarCodeResponse" message="tns:ISINOStockService_GetMaxBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoxListByDt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetBoxListByDt" message="tns:ISINOStockService_GetBoxListByDt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetBoxListByDtResponse" message="tns:ISINOStockService_GetBoxListByDt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxStockBox">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxStockBox" message="tns:ISINOStockService_GetMaxStockBox_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxStockBoxResponse" message="tns:ISINOStockService_GetMaxStockBox_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStockBox">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyStockBox" message="tns:ISINOStockService_ModifyStockBox_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyStockBoxResponse" message="tns:ISINOStockService_ModifyStockBox_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxBarCode_Ex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxBarCode_Ex" message="tns:ISINOStockService_GetMaxBarCode_Ex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxBarCode_ExResponse" message="tns:ISINOStockService_GetMaxBarCode_Ex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxStockBox_Ex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxStockBox_Ex" message="tns:ISINOStockService_GetMaxStockBox_Ex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxStockBox_ExResponse" message="tns:ISINOStockService_GetMaxStockBox_Ex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBoxBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ChangeBoxBarCode" message="tns:ISINOStockService_ChangeBoxBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ChangeBoxBarCodeResponse" message="tns:ISINOStockService_ChangeBoxBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyBoxBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyBoxBarCode" message="tns:ISINOStockService_ModifyBoxBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyBoxBarCodeResponse" message="tns:ISINOStockService_ModifyBoxBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStocBoxkEntityByIsUnPrint">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStocBoxkEntityByIsUnPrint" message="tns:ISINOStockService_GetStocBoxkEntityByIsUnPrint_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStocBoxkEntityByIsUnPrintResponse" message="tns:ISINOStockService_GetStocBoxkEntityByIsUnPrint_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockDetailList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockDetailList" message="tns:ISINOStockService_GetStockDetailList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockDetailListResponse" message="tns:ISINOStockService_GetStockDetailList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStockDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddStockDetail" message="tns:ISINOStockService_AddStockDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddStockDetailResponse" message="tns:ISINOStockService_AddStockDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStockDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyStockDetail" message="tns:ISINOStockService_ModifyStockDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyStockDetailResponse" message="tns:ISINOStockService_ModifyStockDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockDetail" message="tns:ISINOStockService_DeleteStockDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockDetailResponse" message="tns:ISINOStockService_DeleteStockDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStockDetailStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/UpdateStockDetailStatus" message="tns:ISINOStockService_UpdateStockDetailStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/UpdateStockDetailStatusResponse" message="tns:ISINOStockService_UpdateStockDetailStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetailStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetailStatus" message="tns:ISINOStockService_CheckStockDetailStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetailStatusResponse" message="tns:ISINOStockService_CheckStockDetailStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetailStatus_Out">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetailStatus_Out" message="tns:ISINOStockService_CheckStockDetailStatus_Out_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetailStatus_OutResponse" message="tns:ISINOStockService_CheckStockDetailStatus_Out_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockDetailByGlassID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockDetailByGlassID" message="tns:ISINOStockService_GetStockDetailByGlassID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockDetailByGlassIDResponse" message="tns:ISINOStockService_GetStockDetailByGlassID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetail_In">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetail_In" message="tns:ISINOStockService_CheckStockDetail_In_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetail_InResponse" message="tns:ISINOStockService_CheckStockDetail_In_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetail_In_Ex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetail_In_Ex" message="tns:ISINOStockService_CheckStockDetail_In_Ex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/CheckStockDetail_In_ExResponse" message="tns:ISINOStockService_CheckStockDetail_In_Ex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelStockDetailAndTuihuoCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DelStockDetailAndTuihuoCount" message="tns:ISINOStockService_DelStockDetailAndTuihuoCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DelStockDetailAndTuihuoCountResponse" message="tns:ISINOStockService_DelStockDetailAndTuihuoCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotOutEntityByLotNo_Out">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotOutEntityByLotNo_Out" message="tns:ISINOStockService_GetStockLotOutEntityByLotNo_Out_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotOutEntityByLotNo_OutResponse" message="tns:ISINOStockService_GetStockLotOutEntityByLotNo_Out_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotOutEntityByLotNo_Out_NO">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotOutEntityByLotNo_Out_NO" message="tns:ISINOStockService_GetStockLotOutEntityByLotNo_Out_NO_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotOutEntityByLotNo_Out_NOResponse" message="tns:ISINOStockService_GetStockLotOutEntityByLotNo_Out_NO_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EndStockLotOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/EndStockLotOut" message="tns:ISINOStockService_EndStockLotOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/EndStockLotOutResponse" message="tns:ISINOStockService_EndStockLotOut_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockLotOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockLotOut" message="tns:ISINOStockService_DeleteStockLotOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockLotOutResponse" message="tns:ISINOStockService_DeleteStockLotOut_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLotNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/CheckLotNo" message="tns:ISINOStockService_CheckLotNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/CheckLotNoResponse" message="tns:ISINOStockService_CheckLotNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoStockOutGlass">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetNoStockOutGlass" message="tns:ISINOStockService_GetNoStockOutGlass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetNoStockOutGlassResponse" message="tns:ISINOStockService_GetNoStockOutGlass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotOutList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotOutList" message="tns:ISINOStockService_GetStockLotOutList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotOutListResponse" message="tns:ISINOStockService_GetStockLotOutList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo" message="tns:ISINOStockService_GetStockLotEntityByLotNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNoResponse" message="tns:ISINOStockService_GetStockLotEntityByLotNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNo_Ex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo_Ex" message="tns:ISINOStockService_GetStockLotEntityByLotNo_Ex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo_ExResponse" message="tns:ISINOStockService_GetStockLotEntityByLotNo_Ex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityListByLotNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityListByLotNo" message="tns:ISINOStockService_GetStockLotEntityListByLotNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityListByLotNoResponse" message="tns:ISINOStockService_GetStockLotEntityListByLotNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStockLot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddStockLot" message="tns:ISINOStockService_AddStockLot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddStockLotResponse" message="tns:ISINOStockService_AddStockLot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EndStockLot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/EndStockLot" message="tns:ISINOStockService_EndStockLot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/EndStockLotResponse" message="tns:ISINOStockService_EndStockLot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockLot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockLot" message="tns:ISINOStockService_DeleteStockLot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockLotResponse" message="tns:ISINOStockService_DeleteStockLot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNo_Out">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo_Out" message="tns:ISINOStockService_GetStockLotEntityByLotNo_Out_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo_OutResponse" message="tns:ISINOStockService_GetStockLotEntityByLotNo_Out_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotList" message="tns:ISINOStockService_GetStockLotList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotListResponse" message="tns:ISINOStockService_GetStockLotList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotList_Two">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotList_Two" message="tns:ISINOStockService_GetStockLotList_Two_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotList_TwoResponse" message="tns:ISINOStockService_GetStockLotList_Two_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HOLDAllToNewStockLot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/HOLDAllToNewStockLot" message="tns:ISINOStockService_HOLDAllToNewStockLot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/HOLDAllToNewStockLotResponse" message="tns:ISINOStockService_HOLDAllToNewStockLot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockOutQtys">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockOutQtys" message="tns:ISINOStockService_GetStockOutQtys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockOutQtysResponse" message="tns:ISINOStockService_GetStockOutQtys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNoTotal">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNoTotal" message="tns:ISINOStockService_GetStockLotEntityByLotNoTotal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNoTotalResponse" message="tns:ISINOStockService_GetStockLotEntityByLotNoTotal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockOutDetailList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockOutDetailList" message="tns:ISINOStockService_GetStockOutDetailList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockOutDetailListResponse" message="tns:ISINOStockService_GetStockOutDetailList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStockOutDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddStockOutDetail" message="tns:ISINOStockService_AddStockOutDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddStockOutDetailResponse" message="tns:ISINOStockService_AddStockOutDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockoutDetailByGlassID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetStockoutDetailByGlassID" message="tns:ISINOStockService_GetStockoutDetailByGlassID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetStockoutDetailByGlassIDResponse" message="tns:ISINOStockService_GetStockoutDetailByGlassID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStockOutDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyStockOutDetail" message="tns:ISINOStockService_ModifyStockOutDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyStockOutDetailResponse" message="tns:ISINOStockService_ModifyStockOutDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockOutDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockOutDetail" message="tns:ISINOStockService_DeleteStockOutDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/DeleteStockOutDetailResponse" message="tns:ISINOStockService_DeleteStockOutDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStockProDic">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddStockProDic" message="tns:ISINOStockService_AddStockProDic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddStockProDicResponse" message="tns:ISINOStockService_AddStockProDic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProDicByProAndLotID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetProDicByProAndLotID" message="tns:ISINOStockService_GetProDicByProAndLotID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetProDicByProAndLotIDResponse" message="tns:ISINOStockService_GetProDicByProAndLotID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTray">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/AddTray" message="tns:ISINOStockService_AddTray_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/AddTrayResponse" message="tns:ISINOStockService_AddTray_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayByBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetTrayByBarCode" message="tns:ISINOStockService_GetTrayByBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetTrayByBarCodeResponse" message="tns:ISINOStockService_GetTrayByBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayMaxBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetTrayMaxBarCode" message="tns:ISINOStockService_GetTrayMaxBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetTrayMaxBarCodeResponse" message="tns:ISINOStockService_GetTrayMaxBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayListByDt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetTrayListByDt" message="tns:ISINOStockService_GetTrayListByDt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetTrayListByDtResponse" message="tns:ISINOStockService_GetTrayListByDt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxTray">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxTray" message="tns:ISINOStockService_GetMaxTray_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/GetMaxTrayResponse" message="tns:ISINOStockService_GetMaxTray_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTray">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyTray" message="tns:ISINOStockService_ModifyTray_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ModifyTrayResponse" message="tns:ISINOStockService_ModifyTray_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeTryBarCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ChangeTryBarCode" message="tns:ISINOStockService_ChangeTryBarCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ChangeTryBarCodeResponse" message="tns:ISINOStockService_ChangeTryBarCode_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISINOStockService" type="tns:ISINOStockService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Ex">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/Login_Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetAccountList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAccount">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAccount">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelAccount">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DelAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePwd">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ChangePwd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExitCurrentAccount">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ExitCurrentAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormWorkList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetFormWorkList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFormWork">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddFormWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyFormWork">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyFormWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelFormWork">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DelFormWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductStrList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetProductStrList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormWorkByProModel">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetFormWorkByProModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountById">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetAccountById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualityInfoList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetQualityInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddQualityInfo">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddQualityInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyQualityInfo">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyQualityInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelQualityInfo">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DelQualityInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetRoleList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyRole">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelRole">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DelRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStockBox">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddStockBox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockBoxToBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockBoxToBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetMaxBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoxListByDt">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetBoxListByDt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxStockBox">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetMaxStockBox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStockBox">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyStockBox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxBarCode_Ex">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetMaxBarCode_Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxStockBox_Ex">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetMaxStockBox_Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBoxBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ChangeBoxBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyBoxBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyBoxBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStocBoxkEntityByIsUnPrint">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStocBoxkEntityByIsUnPrint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockDetailList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockDetailList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStockDetail">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddStockDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStockDetail">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyStockDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockDetail">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DeleteStockDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStockDetailStatus">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/UpdateStockDetailStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetailStatus">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/CheckStockDetailStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetailStatus_Out">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/CheckStockDetailStatus_Out" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockDetailByGlassID">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockDetailByGlassID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetail_In">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/CheckStockDetail_In" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockDetail_In_Ex">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/CheckStockDetail_In_Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelStockDetailAndTuihuoCount">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DelStockDetailAndTuihuoCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotOutEntityByLotNo_Out">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotOutEntityByLotNo_Out" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotOutEntityByLotNo_Out_NO">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotOutEntityByLotNo_Out_NO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndStockLotOut">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/EndStockLotOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockLotOut">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DeleteStockLotOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLotNo">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/CheckLotNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoStockOutGlass">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetNoStockOutGlass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotOutList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotOutList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNo">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNo_Ex">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo_Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityListByLotNo">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotEntityListByLotNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStockLot">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddStockLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndStockLot">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/EndStockLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockLot">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DeleteStockLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNo_Out">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNo_Out" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotList_Two">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotList_Two" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HOLDAllToNewStockLot">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/HOLDAllToNewStockLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockOutQtys">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockOutQtys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockLotEntityByLotNoTotal">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockLotEntityByLotNoTotal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockOutDetailList">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockOutDetailList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStockOutDetail">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddStockOutDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockoutDetailByGlassID">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetStockoutDetailByGlassID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStockOutDetail">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyStockOutDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStockOutDetail">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/DeleteStockOutDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStockProDic">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddStockProDic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProDicByProAndLotID">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetProDicByProAndLotID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTray">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/AddTray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayByBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetTrayByBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayMaxBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetTrayMaxBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayListByDt">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetTrayListByDt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxTray">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/GetMaxTray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTray">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ModifyTray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeTryBarCode">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ChangeTryBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SINOStockService">
+    <wsdl:port name="BasicHttpBinding_ISINOStockService" binding="tns:BasicHttpBinding_ISINOStockService">
+      <soap:address location="http://localhost:18008/SINOStockService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

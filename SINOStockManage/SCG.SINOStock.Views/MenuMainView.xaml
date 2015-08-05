@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="SCG.SINOStock.Views.MenuMainView"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="View_Loaded">
+    <Grid>
+        <UniformGrid Columns="6" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=AccountVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoAccountView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/iconAccount.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">账户管理</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=RoleVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoRoleMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/iconRole.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">角色管理</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=FormworkVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoFormworkMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/template.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">模版管理</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=QualityInfoVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoQualityInfoMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/quality.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">品质信息管理</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=StockInVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoStockInMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/barcode.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">扫描入库</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=StockInNoVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoStockInNoMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/barcode.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">扫描入库(无对比)</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=JianBaoVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoProcess_JianBaoView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/1.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">减薄后检验</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=PaoGuangVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoProcess_PaoGuangView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/2.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">抛光后检验</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="Collapsed">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoProcess_DuMoView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/3.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">镀膜</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding Path=DuMoVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoStockOutMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/barcodeout.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">镀膜后检验</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="Collapsed">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoStockOutMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/barcodeout.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">镀膜后检验(无对比)</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="Collapsed" >
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoProcess_FanGongView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/iconFanGong.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">返工</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding ImportVisibility}" >
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoImportStockLotView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/iconExcel.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">新建LotNo</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand"  Visibility="{Binding GlassIDVisibility}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoStockLotMainView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/iconJianSuo.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">查询LotNo</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="{Binding GlassIDModifyVisibility}" >
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdGotoModifyGlassIDView}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/Warning.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">GlassID后台</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Cursor="Hand" Visibility="Hidden">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Path=CmdTest}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Style="{StaticResource CAMenuStory}" Source="Assets/Images/iconTask.png"/>
+                <TextBlock Margin="0 5 0 5" HorizontalAlignment="Center">测试</TextBlock>
+            </StackPanel>
+        </UniformGrid>
+    </Grid>
+</UserControl>
