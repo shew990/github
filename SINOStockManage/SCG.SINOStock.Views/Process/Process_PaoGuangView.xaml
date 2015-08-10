@@ -42,7 +42,7 @@
         <GroupBox  Grid.Row="2" Margin="4 4 4 4 ">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Label Content="Glass ID"/>
-                <TextBox x:Name="txtGlassID" Width="300" VerticalContentAlignment="Center"  pwdhelper:TextBoxHelper.Password="{Binding Path=GlassID,Mode=TwoWay}"  IsEnabled="True" >
+                <TextBox x:Name="txtGlassID" Width="300" VerticalContentAlignment="Center"  pwdhelper:TextBoxHelper.Password="{Binding Path=GlassID,Mode=TwoWay}"  IsEnabled="False" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="KeyDown">
                             <commands:EventToCommand Command="{Binding Path=CmdDetailOperater}" PassEventArgsToCommand="True"/>
