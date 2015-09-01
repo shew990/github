@@ -158,6 +158,13 @@ namespace SCG.SINOStock.Views
                     barcode = txtChangeBoxID.Text.Trim();
             }
 
+            //if (txtChangeBoxID.Visibility == Visibility.Visible && !string.IsNullOrWhiteSpace(txtChangeBoxID.Text))
+            //{
+            //    string ErrMsg = string.Empty;
+            //    if (_stockBoxRule.ModifyBoxBarCode(cbBarCode.SelectedItem.ToString(), "*"+txtChangeBoxID.Text.Trim(), ref ErrMsg))
+            //        barcode = "*"+txtChangeBoxID.Text.Trim();
+            //}
+
             switch (iType)
             {
                 case 0:
