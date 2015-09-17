@@ -1237,6 +1237,41 @@ namespace SCG.SINOStock.ViewModels
                     }
 
                 }
+                else
+                {
+
+                    CurrentStockBox = tmpStockBox;
+                    //var LotNoList = tmpStockBox.StockDetails.Select(p => p.StockLot.LotNo).Distinct();
+                    List<string> LotNOList = new List<string>();
+                    ScanStockDetail = new ObservableCollection<PrintHelperEx>();
+                    foreach (var item in CurrentStockBox.StockDetails)//循环去查到当前LotNO
+                    {
+
+                        if (!LotNOList.Any(p => p.Equals(item.StockLot.LotNo)))
+                        {
+
+                            CurrentStockLot.LotNo = item.StockLot.LotNo;
+                            _stockLotRule.GetStockLotEntityByLotNoAsyns(CurrentStockLot.LotNo, STATIC_STATUS, IsCheckAll);
+
+                            LotNOList.Add(item.StockLot.LotNo);
+                            PrintHelperEx ex = new PrintHelperEx();
+                            ex.Value = item.StockLot.LotNo;
+                            ScanStockDetail.Add(ex);
+                        }
+                        PrintHelperEx tmpEx = ScanStockDetail.FirstOrDefault(p => p.Value.Equals(item.StockLot.LotNo));
+                        tmpEx.Item.Add(item);
+
+                    }
+                    _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
+                    {
+                        cmdViewName = CmdViewName.ToolEnterNoToPrintView,
+                        Entity = PrintType.ForceBox,
+                        Tag = CurrentStockLot.ID.ToString(),
+                        cmdName = CmdName.New,
+                        Target = "Sell",
+                        Entity1 = CurrentStockBox,
+                    });
+                }
             }
 
         }
