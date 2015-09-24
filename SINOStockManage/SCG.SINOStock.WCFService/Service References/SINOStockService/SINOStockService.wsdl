@@ -207,6 +207,12 @@
   <wsdl:message name="ISINOStockService_ChangeBoxBarCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangeBoxBarCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangeBoxBarCode_Pro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBoxBarCode_Pro" />
+  </wsdl:message>
+  <wsdl:message name="ISINOStockService_ChangeBoxBarCode_Pro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBoxBarCode_ProResponse" />
+  </wsdl:message>
   <wsdl:message name="ISINOStockService_ModifyBoxBarCode_InputMessage">
     <wsdl:part name="parameters" element="tns:ModifyBoxBarCode" />
   </wsdl:message>
@@ -615,6 +621,10 @@
     <wsdl:operation name="ChangeBoxBarCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ChangeBoxBarCode" message="tns:ISINOStockService_ChangeBoxBarCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ChangeBoxBarCodeResponse" message="tns:ISINOStockService_ChangeBoxBarCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBoxBarCode_Pro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ChangeBoxBarCode_Pro" message="tns:ISINOStockService_ChangeBoxBarCode_Pro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISINOStockService/ChangeBoxBarCode_ProResponse" message="tns:ISINOStockService_ChangeBoxBarCode_Pro_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ModifyBoxBarCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ISINOStockService/ModifyBoxBarCode" message="tns:ISINOStockService_ModifyBoxBarCode_InputMessage" />
@@ -1093,6 +1103,15 @@
     </wsdl:operation>
     <wsdl:operation name="ChangeBoxBarCode">
       <soap:operation soapAction="http://tempuri.org/ISINOStockService/ChangeBoxBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBoxBarCode_Pro">
+      <soap:operation soapAction="http://tempuri.org/ISINOStockService/ChangeBoxBarCode_Pro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

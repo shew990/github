@@ -526,7 +526,7 @@ Lo,24,583,768,586
                     string strTmp = item;
 
                     //TODO:打印到文件
-                     Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
+                    //Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
                     byte[] by = System.Text.Encoding.Default.GetBytes(strTmp.Trim());
                     sendcommand(by);
                     //  strTest += strTmp + "\r\n";
@@ -620,29 +620,30 @@ Lo,24,583,768,586
                 int indexY = 21;//每个GlassID Y轴间隔
 
                 int i = 0;
+                int MaxRowCount = 21;//Y轴最大行数
                 foreach (var item in strPrintArray)
                 {
-                    if (i == 20)//Y轴只能打下20
+                    if (i == MaxRowCount)//Y轴只能打下20
                     {
                         iCurrentY = printY;
                         iCurrentX += indexX;
                         i = 0;
                     }
 
-                    sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, " "));
-                    iCurrentY += indexY;
-                    i++;
+                    //sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, " "));
+                    //iCurrentY += indexY;
+                    //i++;
 
                     if (isPrintLotNO)
                     {
-                        if (i == 20)//Y轴只能打下20
+                        if (i == MaxRowCount)//Y轴只能打下20
                         {
                             iCurrentY = printY;
                             iCurrentX += indexX;
                             i = 0;
                         }
-
-                        if (item.Value.Length < 26)
+                        string temp = CutStr(26, item.Value);//超过26位换行
+                        if (temp.Equals(item.Value))
                         {
                             sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, item.Value));
                             iCurrentY += indexY;
@@ -650,13 +651,13 @@ Lo,24,583,768,586
                         }
                         else//LOTNO换行
                         {
-                            string str1 = item.Value.Substring(0, 26);
-                            string str2 = item.Value.Substring(26);
+                            string str1 = temp;
+                            string str2 = item.Value.Replace(temp, "");
                             sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, str1));
                             iCurrentY += indexY;
                             i++;
 
-                            if (i == 20)//Y轴只能打下20
+                            if (i == MaxRowCount)//Y轴只能打下20
                             {
                                 iCurrentY = printY;
                                 iCurrentX += indexX;
@@ -670,13 +671,17 @@ Lo,24,583,768,586
                     }
                     foreach (var detail in item.Item)
                     {
-                        if (i == 20)//Y轴只能打下20
+                        if (i == MaxRowCount)//Y轴只能打下20
                         {
                             iCurrentY = printY;
                             iCurrentX += indexX;
                             i = 0;
                         }
-                        sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
+                        if (CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位换更小字体
+                            sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
+                        else
+                            sb.Append(string.Format("AA,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
+
                         iCurrentY += indexY;
                         i++;
                     }
@@ -691,7 +696,7 @@ Lo,24,583,768,586
                     string strTmp = item;
 
                     //TODO:打印到文件
-                    // Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
+                    //Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
                     byte[] by = System.Text.Encoding.Default.GetBytes(strTmp.Trim());
                     sendcommand(by);
                     //  strTest += strTmp + "\r\n";
@@ -707,7 +712,29 @@ Lo,24,583,768,586
         }
         #endregion
 
-
+        /// <summary>
+        /// 截断字符串
+        /// </summary>
+        /// <param name="maxLength">最大长度</param>
+        /// <param name="str">原字符串</param>
+        /// <returns></returns>
+        public static string CutStr(int maxLength, string str)
+        {
+            string temp = str;
+            if (Regex.Replace(temp, "[\u4e00-\u9fa5]", "zz", RegexOptions.IgnoreCase).Length <= maxLength)
+            {
+                return temp;
+            }
+            for (int i = temp.Length; i >= 0; i--)
+            {
+                temp = temp.Substring(0, i);
+                if (Regex.Replace(temp, "[\u4e00-\u9fa5]", "zz", RegexOptions.IgnoreCase).Length <= maxLength - 3)
+                {
+                    return temp;
+                }
+            }
+            return "";
+        }
 
     }
 
@@ -730,4 +757,6 @@ Lo,24,583,768,586
     {
         GlassID, LOTNO
     }
+
+
 }

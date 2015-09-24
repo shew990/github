@@ -576,6 +576,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ChangeBoxBarCode_Pro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strNewBarCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strOldBarCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AccountID" type="xs:int" />
+        <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeBoxBarCode_ProResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="ChangeBoxBarCode_ProResult" nillable="true" type="q36:StockBox" />
+        <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ModifyBoxBarCode">
     <xs:complexType>
       <xs:sequence>
@@ -607,7 +625,7 @@
   <xs:element name="GetStocBoxkEntityByIsUnPrintResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStocBoxkEntityByIsUnPrintResult" nillable="true" type="q36:StockBox" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStocBoxkEntityByIsUnPrintResult" nillable="true" type="q37:StockBox" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -627,7 +645,7 @@
   <xs:element name="GetStockDetailListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockDetailListResult" nillable="true" type="q37:ArrayOfStockDetail" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockDetailListResult" nillable="true" type="q38:ArrayOfStockDetail" />
         <xs:element minOccurs="0" name="CountQty" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -638,7 +656,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q38:StockDetail" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q39:StockDetail" />
         <xs:element minOccurs="0" name="IsCheck" type="xs:boolean" />
         <xs:element minOccurs="0" name="QtyCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
@@ -659,7 +677,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q39:StockDetail" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q40:StockDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -677,7 +695,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q40:StockDetail" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q41:StockDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -725,7 +743,7 @@
   <xs:element name="CheckStockDetailStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="CheckStockDetailStatusResult" nillable="true" type="q41:StockDetail" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="CheckStockDetailStatusResult" nillable="true" type="q42:StockDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -736,7 +754,7 @@
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
         <xs:element minOccurs="0" name="strGlassID" nillable="true" type="xs:string" />
-        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="strLotIDs" nillable="true" type="q42:ArrayOfint" />
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="strLotIDs" nillable="true" type="q43:ArrayOfint" />
         <xs:element minOccurs="0" name="iStatus" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -745,7 +763,7 @@
   <xs:element name="CheckStockDetailStatus_OutResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="CheckStockDetailStatus_OutResult" nillable="true" type="q43:StockDetail" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="CheckStockDetailStatus_OutResult" nillable="true" type="q44:StockDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -763,7 +781,7 @@
   <xs:element name="GetStockDetailByGlassIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockDetailByGlassIDResult" nillable="true" type="q44:StockDetail" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockDetailByGlassIDResult" nillable="true" type="q45:StockDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -831,7 +849,7 @@
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
         <xs:element minOccurs="0" name="LotNo" nillable="true" type="xs:string" />
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q45:FormWork" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q46:FormWork" />
         <xs:element minOccurs="0" name="OutCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -840,8 +858,8 @@
   <xs:element name="GetStockLotOutEntityByLotNo_OutResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotOutEntityByLotNo_OutResult" nillable="true" type="q46:StockLotOut" />
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q47:FormWork" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotOutEntityByLotNo_OutResult" nillable="true" type="q47:StockLotOut" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q48:FormWork" />
         <xs:element minOccurs="0" name="OutCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -855,7 +873,7 @@
         <xs:element minOccurs="0" name="LotNo" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
         <xs:element minOccurs="0" name="ProModel" nillable="true" type="xs:string" />
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q48:FormWork" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q49:FormWork" />
         <xs:element minOccurs="0" name="OutCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -864,8 +882,8 @@
   <xs:element name="GetStockLotOutEntityByLotNo_Out_NOResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotOutEntityByLotNo_Out_NOResult" nillable="true" type="q49:StockLotOut" />
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q50:FormWork" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotOutEntityByLotNo_Out_NOResult" nillable="true" type="q50:StockLotOut" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="formWork" nillable="true" type="q51:FormWork" />
         <xs:element minOccurs="0" name="OutCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -938,7 +956,7 @@
   <xs:element name="GetNoStockOutGlassResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetNoStockOutGlassResult" nillable="true" type="q51:ArrayOfstring" />
+        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetNoStockOutGlassResult" nillable="true" type="q52:ArrayOfstring" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -948,7 +966,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="queryList" nillable="true" type="q52:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q53="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="queryList" nillable="true" type="q53:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="PageCount" type="xs:int" />
         <xs:element minOccurs="0" name="PageIndex" type="xs:int" />
         <xs:element minOccurs="0" name="listCount" type="xs:int" />
@@ -959,7 +977,7 @@
   <xs:element name="GetStockLotOutListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotOutListResult" nillable="true" type="q53:ArrayOfStockLotOut" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotOutListResult" nillable="true" type="q54:ArrayOfStockLotOut" />
         <xs:element minOccurs="0" name="listCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -984,7 +1002,7 @@
   <xs:element name="GetStockLotEntityByLotNoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityByLotNoResult" nillable="true" type="q54:StockLot" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityByLotNoResult" nillable="true" type="q55:StockLot" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
         <xs:element minOccurs="0" name="OperaterQty" type="xs:int" />
         <xs:element minOccurs="0" name="FanGongQty" type="xs:int" />
@@ -1010,7 +1028,7 @@
   <xs:element name="GetStockLotEntityByLotNo_ExResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityByLotNo_ExResult" nillable="true" type="q55:StockLot" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityByLotNo_ExResult" nillable="true" type="q56:StockLot" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
         <xs:element minOccurs="0" name="HOLDQty" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
@@ -1022,7 +1040,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LotID" nillable="true" type="q56:ArrayOfint" />
+        <xs:element xmlns:q57="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LotID" nillable="true" type="q57:ArrayOfint" />
         <xs:element minOccurs="0" name="iStatus" type="xs:int" />
         <xs:element minOccurs="0" name="isShowAllDetail" type="xs:boolean" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
@@ -1032,7 +1050,7 @@
   <xs:element name="GetStockLotEntityListByLotNoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityListByLotNoResult" nillable="true" type="q57:ArrayOfStockLot" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityListByLotNoResult" nillable="true" type="q58:ArrayOfStockLot" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1042,7 +1060,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q58:StockLot" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q59:StockLot" />
         <xs:element minOccurs="0" name="StockLotID" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -1107,7 +1125,7 @@
   <xs:element name="GetStockLotEntityByLotNo_OutResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityByLotNo_OutResult" nillable="true" type="q59:StockLot" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotEntityByLotNo_OutResult" nillable="true" type="q60:StockLot" />
         <xs:element minOccurs="0" name="OutCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -1118,7 +1136,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q60="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="queryList" nillable="true" type="q60:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q61="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="queryList" nillable="true" type="q61:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="PageCount" type="xs:int" />
         <xs:element minOccurs="0" name="PageIndex" type="xs:int" />
         <xs:element minOccurs="0" name="listCount" type="xs:int" />
@@ -1129,7 +1147,7 @@
   <xs:element name="GetStockLotListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotListResult" nillable="true" type="q61:ArrayOfStockLot" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotListResult" nillable="true" type="q62:ArrayOfStockLot" />
         <xs:element minOccurs="0" name="listCount" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -1140,7 +1158,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q62="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="queryList" nillable="true" type="q62:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q63="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="queryList" nillable="true" type="q63:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1148,7 +1166,7 @@
   <xs:element name="GetStockLotList_TwoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotList_TwoResult" nillable="true" type="q63:ArrayOfStockLot" />
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockLotList_TwoResult" nillable="true" type="q64:ArrayOfStockLot" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1174,14 +1192,14 @@
   <xs:element name="GetStockOutQtys">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q64="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StockLotIDs" nillable="true" type="q64:ArrayOfint" />
+        <xs:element xmlns:q65="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StockLotIDs" nillable="true" type="q65:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStockOutQtysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/SCG.SINOStock.WCF" minOccurs="0" name="GetStockOutQtysResult" nillable="true" type="q65:ArrayOfStockOutQtyHelper" />
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/SCG.SINOStock.WCF" minOccurs="0" name="GetStockOutQtysResult" nillable="true" type="q66:ArrayOfStockOutQtyHelper" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1228,7 +1246,7 @@
   <xs:element name="GetStockOutDetailListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockOutDetailListResult" nillable="true" type="q66:ArrayOfStockOutDetail" />
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockOutDetailListResult" nillable="true" type="q67:ArrayOfStockOutDetail" />
         <xs:element minOccurs="0" name="CountQty" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -1239,10 +1257,10 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q67:StockOutDetail" />
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q68:StockOutDetail" />
         <xs:element minOccurs="0" name="IsCheck" type="xs:boolean" />
         <xs:element minOccurs="0" name="QtyCount" type="xs:int" />
-        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entityID" nillable="true" type="q68:StockOutDetail" />
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entityID" nillable="true" type="q69:StockOutDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1252,7 +1270,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="AddStockOutDetailResult" type="xs:boolean" />
         <xs:element minOccurs="0" name="QtyCount" type="xs:int" />
-        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entityID" nillable="true" type="q69:StockOutDetail" />
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entityID" nillable="true" type="q70:StockOutDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1270,7 +1288,7 @@
   <xs:element name="GetStockoutDetailByGlassIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockoutDetailByGlassIDResult" nillable="true" type="q70:StockOutDetail" />
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetStockoutDetailByGlassIDResult" nillable="true" type="q71:StockOutDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1280,7 +1298,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q71:StockOutDetail" />
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q72:StockOutDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1298,7 +1316,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q72:StockOutDetail" />
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q73:StockOutDetail" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1314,7 +1332,7 @@
   <xs:element name="AddStockProDic">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q73:StockProDic" />
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q74:StockProDic" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1338,7 +1356,7 @@
   <xs:element name="GetProDicByProAndLotIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetProDicByProAndLotIDResult" nillable="true" type="q74:StockProDic" />
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetProDicByProAndLotIDResult" nillable="true" type="q75:StockProDic" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1347,11 +1365,11 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q75:Tray" />
-        <xs:element xmlns:q76="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StockLotIDs" nillable="true" type="q76:ArrayOfint" />
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q76:Tray" />
+        <xs:element xmlns:q77="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StockLotIDs" nillable="true" type="q77:ArrayOfint" />
         <xs:element minOccurs="0" name="isQiangDa" type="xs:boolean" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
-        <xs:element xmlns:q77="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Boxs" nillable="true" type="q77:ArrayOfstring" />
+        <xs:element xmlns:q78="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Boxs" nillable="true" type="q78:ArrayOfstring" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1361,7 +1379,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="AddTrayResult" type="xs:boolean" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
-        <xs:element xmlns:q78="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Boxs" nillable="true" type="q78:ArrayOfstring" />
+        <xs:element xmlns:q79="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Boxs" nillable="true" type="q79:ArrayOfstring" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1381,7 +1399,7 @@
   <xs:element name="GetTrayByBarCodeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetTrayByBarCodeResult" nillable="true" type="q79:Tray" />
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetTrayByBarCodeResult" nillable="true" type="q80:Tray" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
         <xs:element minOccurs="0" name="ProModel" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
@@ -1420,7 +1438,7 @@
   <xs:element name="GetTrayListByDtResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetTrayListByDtResult" nillable="true" type="q80:ArrayOfTray" />
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetTrayListByDtResult" nillable="true" type="q81:ArrayOfTray" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1438,7 +1456,7 @@
   <xs:element name="GetMaxTrayResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetMaxTrayResult" nillable="true" type="q81:Tray" />
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="GetMaxTrayResult" nillable="true" type="q82:Tray" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1448,7 +1466,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="checkCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AccountID" type="xs:int" />
-        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q82:Tray" />
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/SCG.SINOStock.Entities" minOccurs="0" name="entity" nillable="true" type="q83:Tray" />
         <xs:element minOccurs="0" name="StockLotID" type="xs:int" />
         <xs:element minOccurs="0" name="Qty" type="xs:int" />
         <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />

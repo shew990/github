@@ -275,14 +275,13 @@ namespace SCG.SINOStock.WCF
         {
             string result = string.Empty;
             StockBox sb = entities.StockBoxes.OrderByDescending(p => p.ID).FirstOrDefault();
-
             if (sb == null)
             {
                 return DateTime.Now.ToString("yyyyMMdd") + "0001";
 
             }
             string strBarCode = sb.BarCode;
-            if(strBarCode.Length>8)//如果长度大于8，则判断是否为时间格式
+            if (strBarCode.Length > 8)//如果长度大于8，则判断是否为时间格式
             {
                 string tmpDtSub = strBarCode.Substring(0, 4) + "-" + strBarCode.Substring(4, 2) + "-" + strBarCode.Substring(6, 2);
                 DateTime tmpdtresult;
@@ -300,17 +299,17 @@ namespace SCG.SINOStock.WCF
                         else
                             return DateTime.Now.ToString("yyyyMMdd") + "0001";
                     }
-                    
-                  
+
+
                 }
-              
+
             }
 
 
             Regex rex = new Regex(@"^\d+$");
-         
-            int iIndex=0;
-            for (int i = strBarCode.Length-1; i >=0; i--)
+
+            int iIndex = 0;
+            for (int i = strBarCode.Length - 1; i >= 0; i--)
             {
                 string strItem = strBarCode[i].ToString();
                 if (!rex.IsMatch(strItem))//如果不为
@@ -319,18 +318,18 @@ namespace SCG.SINOStock.WCF
                     break;
                 }
             }
-           
+
             int iIntLeng = strBarCode.Length - iIndex;
             if (iIntLeng >= 6)
             {
                 iIndex = strBarCode.Length - 6;
                 iIntLeng = 6;
             }
-            string tmp = strBarCode.Substring(iIndex+1);
+            string tmp = strBarCode.Substring(iIndex + 1);
             int itmp = int.Parse(tmp);
 
             itmp += 1;
-            result = strBarCode.Substring(0, iIndex+1) + itmp.ToString().PadLeft(iIntLeng-1, '0');
+            result = strBarCode.Substring(0, iIndex + 1) + itmp.ToString().PadLeft(iIntLeng - 1, '0');
             return result;
         }
 
@@ -393,11 +392,11 @@ namespace SCG.SINOStock.WCF
         }
 
 
-        public StockBox ChangeBoxBarCode(string strBarCode,ref string ErrMsg)
+        public StockBox ChangeBoxBarCode(string strBarCode, ref string ErrMsg)
         {
             try
             {
-              //  string strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
+                //  string strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
                 if (entities.StockBoxes.Any(p => p.BarCode == strBarCode))
                 {
                     ErrMsg = "输入的BOXID已存在";
@@ -411,6 +410,37 @@ namespace SCG.SINOStock.WCF
 
                 entities.StockBoxes.Add(sb);
                 entities.SaveChanges();
+                return sb;
+            }
+            catch (Exception ex)
+            {
+                ErrMsg = ex.Message;
+                return null;
+            }
+        }
+
+        public StockBox ChangeBoxBarCode_Pro(string strNewBarCode, string strOldBarCode, int AccountID, ref string ErrMsg)
+        {
+            try
+            {
+                //  string strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
+                if (entities.StockBoxes.Any(p => p.BarCode == strNewBarCode))
+                {
+                    ErrMsg = "输入的BOXID已存在";
+                    return null;
+                }
+
+                StockBox sb = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strOldBarCode);
+                sb.BarCode = strNewBarCode;
+                sb.IsModify = true;
+                sb.isPrint = true;
+
+                if (entities.SaveChanges() <= 0)
+                {
+                    ErrMsg = "修改失败";
+                    return null;
+                }
+
                 return sb;
             }
             catch (Exception ex)
@@ -460,7 +490,7 @@ namespace SCG.SINOStock.WCF
                 StockBox sb = entities.StockBoxes.FirstOrDefault(p => p.BarCode == OldBarCode);
                 sb.BarCode = NewBarCode;
                 sb.IsModify = true;
-                
+
                 if (entities.SaveChanges() <= 0)
                 {
                     ErrMsg = "修改失败";
@@ -490,7 +520,7 @@ namespace SCG.SINOStock.WCF
 
             try
             {
-                return entities.StockBoxes.Include("StockDetails").Include("StockDetails.StockLot").FirstOrDefault(p => p.isPrint==false&& p.CreateAccountID == AccountID);
+                return entities.StockBoxes.Include("StockDetails").Include("StockDetails.StockLot").FirstOrDefault(p => p.isPrint == false && p.CreateAccountID == AccountID);
             }
             catch (Exception ex)
             {

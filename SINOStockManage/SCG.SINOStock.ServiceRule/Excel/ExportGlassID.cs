@@ -102,6 +102,7 @@ namespace SCG.SINOStock.ServiceRule.Excel
                             continue;
                         }
 
+
                         foreach (var pro in t.GetProperties())//遍历实体属性
                         {
                             if (pro.Name == column.ColumnName)
@@ -126,10 +127,17 @@ namespace SCG.SINOStock.ServiceRule.Excel
                                             if (value.GetType() == typeof(StockBox))
                                             {
                                                 StockBox sb = value as StockBox;
-                                                if (sb != null)
-                                                    tmpcellvalue = sb.BarCode;
-                                                else
-                                                    tmpcellvalue = "";
+                                        if (sb != null)
+                                        {
+                                            if (sb.IsModify!=null&&sb.IsModify==true)//修改过的BOXID后面增加“*”
+                                            {
+                                                tmpcellvalue = sb.BarCode+"*";
+                                            }
+                                            else
+                                                tmpcellvalue = sb.BarCode;
+                                        }
+                                        else
+                                            tmpcellvalue = "";
                                             }
                                             else
                                                 if (value.GetType() == typeof(Tray))

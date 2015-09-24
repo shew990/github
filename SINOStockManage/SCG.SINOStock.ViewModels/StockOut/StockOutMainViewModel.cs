@@ -1019,9 +1019,9 @@ namespace SCG.SINOStock.ViewModels
                 string ErrMsg = string.Empty;
                 StockBox box = _stockBoxRule.GetStockBoxToBarCode(BarCode, ref ErrMsg);
 
-                if (box.IsModify != null && box.IsModify.Value)
-                    //BarCode += "M";
-                    BarCode += "*";
+                //if (box.IsModify != null && box.IsModify.Value)
+                //    //BarCode += "M";
+                //    BarCode += "*";
 
 
                 List<PrintHelperEx> lstPrint = new List<PrintHelperEx>();

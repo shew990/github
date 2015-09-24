@@ -196,6 +196,29 @@ namespace SCG.SINOStock.WCFService
             throw new NotImplementedException();
         }
 
+        public StockBox ChangeBoxBarCode_Pro(string strNewBarCode, string strOldBarCode, int AccountID, ref string ErrMsg)
+        {
+            try
+            {
+                return _client.ChangeBoxBarCode_Pro(strNewBarCode, strOldBarCode, AccountID, ref ErrMsg);
+            }
+            catch (Exception ex)
+            {
+                ErrMsg = ex.Message;
+                return null;
+            }
+        }
+
+        public IAsyncResult BeginChangeBoxBarCode_Pro(string strNewBarCode, string strOldBarCode, int AccountID, ref string ErrMsg, AsyncCallback callback, object asyncState)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StockBox EndChangeBoxBarCode_Pro(ref string ErrMsg, IAsyncResult result)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public bool ModifyBoxBarCode(string checkCode, int AccountID, string OldBarCode, string NewBarCode, ref string ErrMsg)
         {

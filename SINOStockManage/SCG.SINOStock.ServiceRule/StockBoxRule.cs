@@ -47,6 +47,11 @@ namespace SCG.SINOStock.ServiceRule
             return Proxy.ChangeBoxBarCode(BarCode, ref ErrMsg);
         }
 
+        public StockBox ChangeBoxBarCode_Pro(string NewBarCode,string OldBarCode, ref string ErrMsg)
+        {
+            return Proxy.ChangeBoxBarCode_Pro(NewBarCode, OldBarCode, CurrentAccount.ID, ref ErrMsg);
+        }
+
         public bool ModifyBoxBarCode( string OldBarCode, string NewBarCode, ref string ErrMsg)
         {
             return Proxy.ModifyBoxBarCode(CurrentAccount.CheckCode, CurrentAccount.ID, OldBarCode, NewBarCode, ref ErrMsg);

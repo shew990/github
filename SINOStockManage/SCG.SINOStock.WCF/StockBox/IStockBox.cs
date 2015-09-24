@@ -33,7 +33,10 @@ namespace SCG.SINOStock.WCF
         [OperationContract]
         StockBox ChangeBoxBarCode(string strBarCode, ref string ErrMsg);
 
-        
+        [OperationContract]
+        StockBox ChangeBoxBarCode_Pro(string strNewBarCode,string strOldBarCode, int AccountID, ref string ErrMsg);
+
+
         /// <summary>
         /// 补打时：修改外箱标签
         /// </summary>

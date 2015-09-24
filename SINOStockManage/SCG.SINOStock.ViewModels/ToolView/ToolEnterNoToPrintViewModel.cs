@@ -270,7 +270,9 @@ namespace SCG.SINOStock.ViewModels
                     if (_currentStockBox.BarCode != Content)
                     {
 
-                        StockBox sb = _stockboxRule.ChangeBoxBarCode(Content, ref ErrMsg);
+                        //StockBox sb = _stockboxRule.ChangeBoxBarCode(Content, ref ErrMsg);
+                        StockBox sb = _stockboxRule.ChangeBoxBarCode_Pro(Content, _currentStockBox.BarCode, ref ErrMsg);
+
                         if (sb == null)
                         {
                             Common.MessageBox.Show(ErrMsg);
@@ -328,7 +330,8 @@ namespace SCG.SINOStock.ViewModels
                     if (_currentStockBox.BarCode != Content)
                     {
                        // string ErrMsg = string.Empty;
-                        StockBox sb = _stockboxRule.ChangeBoxBarCode(Content, ref ErrMsg);
+                        //StockBox sb = _stockboxRule.ChangeBoxBarCode(Content, ref ErrMsg);
+                        StockBox sb = _stockboxRule.ChangeBoxBarCode_Pro(Content, _currentStockBox.BarCode, ref ErrMsg);
                         if (sb == null)
                         {
                             Common.MessageBox.Show(ErrMsg);
