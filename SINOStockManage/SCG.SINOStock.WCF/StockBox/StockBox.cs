@@ -432,7 +432,7 @@ namespace SCG.SINOStock.WCF
 
                 StockBox sb = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strOldBarCode);
                 sb.BarCode = strNewBarCode;
-                sb.IsModify = true;
+                //sb.IsModify = true;//首次打印修改BOXID不打标记
                 sb.isPrint = true;
 
                 if (entities.SaveChanges() <= 0)
