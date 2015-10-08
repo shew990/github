@@ -712,6 +712,174 @@ Lo,24,583,768,586
         }
         #endregion
 
+        public static bool PrintStockBoxAgain_EXT(string strBox, string strProModel, PrintHelperEx[] strPrintArray, ref string ErrMsg)
+        {
+            //  string strTest = string.Empty;
+            openport("6"); //Ex:USB
+            try
+            {
+                string name = string.Empty;
+                string strPrintLotNO = string.Empty;
+                string strLogoName = string.Empty;
+                try
+                {
+                    name = ConfigurationManager.AppSettings["CoLtdName"].ToString();
+                    strPrintLotNO = ConfigurationManager.AppSettings["IsPrintLOTNO"].ToString();
+                    strLogoName = ConfigurationManager.AppSettings["LogoName"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    ErrMsg = "打印未成功：配置文件的配置不正确，请检查";
+                    return false;
+                }
+                bool isPrintLotNO = strPrintLotNO.ToUpper().Equals("YES");
+
+
+
+                string strCMD = @"^Q80,3
+^W100
+^H5
+^P1
+^S2
+^AD
+^C1
+^R8
+~Q+8
+^O0
+^D0
+^E12
+~R200
+^XSET,ROTATION,0
+^L
+Dy2-me-dd
+Th:m:s
+Dy2-me-dd
+Th:m:s
+Lo,14,125,758,128
+Lo,24,583,768,586
+";
+
+
+                string printProModel = string.Format("AZ2,18,20,1,1,0,0,型号:{0}\r\n", strProModel);
+                string printDate = string.Format("AZ2,18,54,1,1,0,0,日期:{0}\r\n", DateTime.Now.ToString("yyyy-MM-dd"));
+                string printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox+"*");//明文带"*"，条码不带
+                string printBOXIDBarCode = string.Format("BQ,346,59,2,6,60,0,0,{0}\r\n", strBox);
+                string printName = string.Format("AZ2,430,599,1,1,0,0,{0}\r\n", name);
+                //string printImage = string.Format("Y658,26,{0}\r\n", strLogoName);
+                string printImage = string.Format("Y668,36,{0}\r\n", strLogoName);
+
+                StringBuilder sbTmp = new StringBuilder().Append(printProModel).Append(printDate).Append(printBOXID).Append(printBOXIDBarCode).Append(printName).Append(printImage);
+
+                strCMD += sbTmp.ToString();
+
+                string strEnd = @"E
+";
+                StringBuilder sb = new StringBuilder();
+
+
+
+                int printX = 15;//初始坐标X
+                int printY = 134;//初始坐标Y
+
+                int iCurrentX = printX;
+                int iCurrentY = printY;
+
+                int indexX = 270;//每个GlassID X轴间隔
+                int indexY = 21;//每个GlassID Y轴间隔
+
+                int i = 0;
+                int MaxRowCount = 21;//Y轴最大行数
+                foreach (var item in strPrintArray)
+                {
+                    if (i == MaxRowCount)//Y轴只能打下20
+                    {
+                        iCurrentY = printY;
+                        iCurrentX += indexX;
+                        i = 0;
+                    }
+
+                    //sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, " "));
+                    //iCurrentY += indexY;
+                    //i++;
+
+                    if (isPrintLotNO)
+                    {
+                        if (i == MaxRowCount)//Y轴只能打下20
+                        {
+                            iCurrentY = printY;
+                            iCurrentX += indexX;
+                            i = 0;
+                        }
+                        string temp = CutStr(26, item.Value);//超过26位换行
+                        if (temp.Equals(item.Value))
+                        {
+                            sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, item.Value));
+                            iCurrentY += indexY;
+                            i++;
+                        }
+                        else//LOTNO换行
+                        {
+                            string str1 = temp;
+                            string str2 = item.Value.Replace(temp, "");
+                            sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, str1));
+                            iCurrentY += indexY;
+                            i++;
+
+                            if (i == MaxRowCount)//Y轴只能打下20
+                            {
+                                iCurrentY = printY;
+                                iCurrentX += indexX;
+                                i = 0;
+                            }
+
+                            sb.Append(string.Format("AZ1,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, str2));
+                            iCurrentY += indexY;
+                            i++;
+                        }
+                    }
+                    foreach (var detail in item.Item)
+                    {
+                        if (i == MaxRowCount)//Y轴只能打下20
+                        {
+                            iCurrentY = printY;
+                            iCurrentX += indexX;
+                            i = 0;
+                        }
+                        if (CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位换更小字体
+                            sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
+                        else
+                            sb.Append(string.Format("AA,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
+
+                        iCurrentY += indexY;
+                        i++;
+                    }
+
+                }
+
+
+
+                string[] tmpstrArray = StrSplitHelp.StringSplit(strCMD + sb.ToString() + strEnd, "\r\n");
+                foreach (string item in tmpstrArray)
+                {
+                    string strTmp = item;
+
+                    //TODO:打印到文件
+                    //Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
+                    byte[] by = System.Text.Encoding.Default.GetBytes(strTmp.Trim());
+                    sendcommand(by);
+                    //  strTest += strTmp + "\r\n";
+                }
+                closeport();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErrMsg = ex.Message;
+                return false;
+            }
+        }
+
+
         /// <summary>
         /// 截断字符串
         /// </summary>

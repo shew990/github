@@ -247,7 +247,7 @@ namespace SCG.SINOStock
             this.PMain.Visibility = Visibility.Hidden;
             this.PLogin.Visibility = Visibility.Visible;
             this.ContentMain.Content = null;
-            this.Title = "SINO生产管理系统 v2.0.3.1[登录]";
+            this.Title = "SINO生产管理系统 v2.0.3.2[登录]";
         }
 
         private void GotoMainView()

@@ -370,15 +370,19 @@ namespace SCG.SINOStock.WCF
         {
             try
             {
-
-                string strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
                 StockBox sb = new StockBox();
+                StockBox s = null;
+                start:
+                string strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
+                sb = new StockBox();
                 sb.BarCode = strBarCode;
                 sb.CreateDt = DateTime.Now;
                 sb.isPrint = false;
-                StockBox s = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strBarCode);
+                s = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strBarCode);
                 if (s == null)
                     sb.CreateAccountID = AccountID;
+                else
+                    goto start;
 
                 entities.StockBoxes.Add(sb);
                 entities.SaveChanges();

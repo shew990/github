@@ -199,6 +199,10 @@ namespace SCG.SINOStock.ViewModels
                         //这里加是否满箱判断原因：当得到上次异常蛮像的数据时，这个异步方法还未执行完毕
                         if (CurrentFormwork != null && ScanStockDetail != null && ScanStockDetail.SelectMany(p => p.Item).Count() >= CurrentFormwork.BoxPCSQty)
                         {
+                            if (Common.ReadCOM.serialport!=null&&Common.ReadCOM.serialport.IsOpen)
+                            {
+                                Common.ReadCOM.serialport.Close();
+                            }
                             MessageBox.Show("BOX已满，点击确定打印外箱凭条");
                             _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
                             {
@@ -209,7 +213,7 @@ namespace SCG.SINOStock.ViewModels
                                 Target = "Sell",
                                 Entity1 = CurrentStockBox,
                             });
-
+                            ReadComTest();
                         }
                     }
                 };
@@ -276,6 +280,10 @@ namespace SCG.SINOStock.ViewModels
 
                         if (CurrentFormwork != null && ScanStockDetail.SelectMany(p => p.Item).Count() >= CurrentFormwork.BoxPCSQty)
                         {
+                            if (Common.ReadCOM.serialport != null && Common.ReadCOM.serialport.IsOpen)
+                            {
+                                Common.ReadCOM.serialport.Close();
+                            }
                             MessageBox.Show("BOX已满，点击确定打印外箱凭条");
                             _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
                             {
@@ -286,7 +294,7 @@ namespace SCG.SINOStock.ViewModels
                                 Target = "Sell",
                                 Entity1 = CurrentStockBox,
                             });
-
+                            ReadComTest();
                         }
 
                         // _stockLotRule.GetStockLotEntityByLotNoAsyns(CurrentStockLot.LotNo, STATIC_STATUS, IsCheckAll);
@@ -1087,7 +1095,7 @@ namespace SCG.SINOStock.ViewModels
                     strProModel = box.StockDetails.First().StockLot.ProModel;
 
 
-                if (!PrintHelp.PrintStockBox_EXT(BarCode, strProModel, lstPrint.ToArray(), ref ErrMsg))
+                if (!PrintHelp.PrintStockBoxAgain_EXT(BarCode, strProModel, lstPrint.ToArray(), ref ErrMsg))
                     Common.MessageBox.Show(ErrMsg);
             }
             catch (Exception ex)
@@ -1222,6 +1230,10 @@ namespace SCG.SINOStock.ViewModels
                         //判断是否可以直接打印
                         if (CurrentFormwork != null && ScanStockDetail.SelectMany(p => p.Item).Count() >= CurrentFormwork.BoxPCSQty)
                         {
+                            if (Common.ReadCOM.serialport != null && Common.ReadCOM.serialport.IsOpen)
+                            {
+                                Common.ReadCOM.serialport.Close();
+                            }
                             MessageBox.Show("BOX已满，点击确定打印外箱凭条");
                             _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
                             {
@@ -1232,6 +1244,7 @@ namespace SCG.SINOStock.ViewModels
                                 Target = "Sell",
                                 Entity1 = CurrentStockBox,
                             });
+                            ReadComTest();
 
                         }
                     }
