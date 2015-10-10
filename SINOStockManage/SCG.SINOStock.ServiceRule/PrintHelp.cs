@@ -526,7 +526,7 @@ Lo,24,583,768,586
                     string strTmp = item;
 
                     //TODO:打印到文件
-                    //Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
+                    Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
                     byte[] by = System.Text.Encoding.Default.GetBytes(strTmp.Trim());
                     sendcommand(by);
                     //  strTest += strTmp + "\r\n";
@@ -595,8 +595,12 @@ Lo,24,583,768,586
                 string printProModel = string.Format("AZ2,18,20,1,1,0,0,型号:{0}\r\n", strProModel);
                 string printDate = string.Format("AZ2,18,54,1,1,0,0,日期:{0}\r\n", DateTime.Now.ToString("yyyy-MM-dd"));
                 string printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox);
-                string printBOXIDBarCode = string.Format("BQ,346,59,2,6,60,0,0,{0}\r\n", strBox);
-                string printName = string.Format("AZ2,430,599,1,1,0,0,{0}\r\n", name);
+                //string printBOXIDBarCode = string.Format("BQ,346,59,2,6,60,0,0,{0}\r\n", strBox);
+                string printBOXIDBarCode = string.Format("BQ,320,57,2,6,60,0,0,{0}\r\n", strBox);
+
+                //string printName = string.Format("AZ2,430,599,1,1,0,0,{0}\r\n", name);
+                string printName = string.Format("AZ2,15,599,1,1,0,0,{0}\r\n", name);
+
                 //string printImage = string.Format("Y658,26,{0}\r\n", strLogoName);
                 string printImage = string.Format("Y668,36,{0}\r\n", strLogoName);
 
@@ -621,11 +625,39 @@ Lo,24,583,768,586
 
                 int i = 0;
                 int MaxRowCount = 21;//Y轴最大行数
+                bool IsModel2 = false;//是否使用4列模版
+                int j = 0;//记录数（换行算两条）
+                //先算记录数（换行算两条）
+                foreach (var item in strPrintArray)
+                {
+                    if (isPrintLotNO)
+                    {
+                        string temp = CutStr(26, item.Value);//超过26位换行
+                        if (temp.Equals(item.Value))
+                        {
+                            j++;
+                        }
+                        else//LOTNO换行
+                        {
+                            j += 2;
+                        }
+                    }
+                    foreach (var detail in item.Item)
+                    {
+                        j++;
+                    }
+                }
+                if (j > 63)
+                {
+                    indexX = 200;//每个GlassID X轴间隔
+                    IsModel2 = true;
+                }
                 foreach (var item in strPrintArray)
                 {
                     if (i == MaxRowCount)//Y轴只能打下20
                     {
                         iCurrentY = printY;
+                        j++;
                         iCurrentX += indexX;
                         i = 0;
                     }
@@ -677,7 +709,7 @@ Lo,24,583,768,586
                             iCurrentX += indexX;
                             i = 0;
                         }
-                        if (CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位换更小字体
+                        if (!IsModel2&&CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位或记录数超过63，换更小字体
                             sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
                         else
                             sb.Append(string.Format("AA,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
@@ -762,9 +794,11 @@ Lo,24,583,768,586
 
                 string printProModel = string.Format("AZ2,18,20,1,1,0,0,型号:{0}\r\n", strProModel);
                 string printDate = string.Format("AZ2,18,54,1,1,0,0,日期:{0}\r\n", DateTime.Now.ToString("yyyy-MM-dd"));
-                string printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox+"*");//明文带"*"，条码不带
-                string printBOXIDBarCode = string.Format("BQ,346,59,2,6,60,0,0,{0}\r\n", strBox);
-                string printName = string.Format("AZ2,430,599,1,1,0,0,{0}\r\n", name);
+                string printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox + "*");//明文带"*"，条码不带
+                //string printBOXIDBarCode = string.Format("BQ,346,59,2,6,60,0,0,{0}\r\n", strBox);
+                string printBOXIDBarCode = string.Format("BQ,320,57,2,6,60,0,0,{0}\r\n", strBox);
+
+                string printName = string.Format("AZ2,15,599,1,1,0,0,{0}\r\n", name);
                 //string printImage = string.Format("Y658,26,{0}\r\n", strLogoName);
                 string printImage = string.Format("Y668,36,{0}\r\n", strLogoName);
 
@@ -789,6 +823,34 @@ Lo,24,583,768,586
 
                 int i = 0;
                 int MaxRowCount = 21;//Y轴最大行数
+                bool IsModel2 = false;//是否使用4列的模板
+                int j = 0;//记录数（换行算两条）
+                //先算记录数（换行算两条）
+                foreach (var item in strPrintArray)
+                {
+                    if (isPrintLotNO)
+                    {
+                        string temp = CutStr(26, item.Value);//超过26位换行
+                        if (temp.Equals(item.Value))
+                        {
+                            j++;
+                        }
+                        else//LOTNO换行
+                        {
+                            j += 2;
+                        }
+                    }
+                    foreach (var detail in item.Item)
+                    {
+                        j++;
+                    }
+                }
+                if (j > 63)//一张标签上记录超过63个，排4列
+                {
+                    indexX = 200;//每个GlassID X轴间隔
+                    IsModel2 = true;
+
+                }
                 foreach (var item in strPrintArray)
                 {
                     if (i == MaxRowCount)//Y轴只能打下20
@@ -845,7 +907,7 @@ Lo,24,583,768,586
                             iCurrentX += indexX;
                             i = 0;
                         }
-                        if (CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位换更小字体
+                        if (!IsModel2&&CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位或者记录数超过63，换更小字体
                             sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
                         else
                             sb.Append(string.Format("AA,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
