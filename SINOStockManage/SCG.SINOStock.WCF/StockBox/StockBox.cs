@@ -327,9 +327,13 @@ namespace SCG.SINOStock.WCF
             }
             string tmp = strBarCode.Substring(iIndex + 1);
             int itmp = int.Parse(tmp);
-
-            itmp += 1;
-            result = strBarCode.Substring(0, iIndex + 1) + itmp.ToString().PadLeft(iIntLeng - 1, '0');
+            start:
+                itmp += 1;
+                result = strBarCode.Substring(0, iIndex + 1) + itmp.ToString().PadLeft(iIntLeng - 1, '0');
+            if (entities.StockBoxes.Any(p => p.BarCode == result))
+            {
+                goto start;
+            }
             return result;
         }
 
@@ -370,21 +374,28 @@ namespace SCG.SINOStock.WCF
         {
             try
             {
-                StockBox sb = new StockBox();
                 StockBox s = null;
+                string strBarCode = String.Empty;
+                StockBox sb = new StockBox();
                 start:
-                string strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
+                {
+                    strBarCode = GetMaxBarCode_Ex(checkCode, AccountID, ref ErrMsg);
+                    s = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strBarCode);
+                }
+                if (s != null)
+                {
+                    System.Threading.Thread.Sleep(100);
+                    goto start;
+                }
+
                 sb = new StockBox();
                 sb.BarCode = strBarCode;
                 sb.CreateDt = DateTime.Now;
                 sb.isPrint = false;
-                s = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strBarCode);
-                if (s == null)
-                    sb.CreateAccountID = AccountID;
-                else
-                    goto start;
+                sb.CreateAccountID = AccountID;
 
                 entities.StockBoxes.Add(sb);
+
                 entities.SaveChanges();
                 return sb;
             }
@@ -435,17 +446,23 @@ namespace SCG.SINOStock.WCF
                 }
 
                 StockBox sb = entities.StockBoxes.FirstOrDefault(p => p.BarCode == strOldBarCode);
-                sb.BarCode = strNewBarCode;
-                //sb.IsModify = true;//首次打印修改BOXID不打标记
                 sb.isPrint = true;
+                //sb.IsModify = true;//首次打印修改BOXID不打标记
 
+                StockBox sbNew = new StockBox();
+                sbNew.CreateDt = DateTime.Now;
+                sbNew.isPrint = true;
+                sbNew.BarCode = strNewBarCode;
+                sbNew.CreateAccountID = AccountID;
+
+                entities.StockBoxes.Add(sbNew);
                 if (entities.SaveChanges() <= 0)
                 {
                     ErrMsg = "修改失败";
                     return null;
                 }
 
-                return sb;
+                return sbNew;
             }
             catch (Exception ex)
             {

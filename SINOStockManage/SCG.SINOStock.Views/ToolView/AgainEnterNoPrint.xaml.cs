@@ -150,9 +150,14 @@ namespace SCG.SINOStock.Views
                 return;
             }
             string barcode = cbBarCode.SelectedItem.ToString();
-           
+
             if (txtChangeBoxID.Visibility == Visibility.Visible && !string.IsNullOrWhiteSpace(txtChangeBoxID.Text))
             {
+                if (!char.IsDigit(txtChangeBoxID.Text.Trim(), txtChangeBoxID.Text.Trim().Length - 1))
+                {
+                    Common.MessageBox.Show("BOXID不合法！");
+                    return;
+                }
                 string ErrMsg = string.Empty;
                 if (_stockBoxRule.ModifyBoxBarCode(cbBarCode.SelectedItem.ToString(), txtChangeBoxID.Text.Trim(), ref ErrMsg))
                     barcode = txtChangeBoxID.Text.Trim();

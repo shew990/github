@@ -267,11 +267,15 @@ namespace SCG.SINOStock.ViewModels
             switch (CurrentPrintType)
             {
                 case PrintType.Box:
-                    if (_currentStockBox.BarCode != Content)
+                    if (_currentStockBox.BarCode != Content.Trim())
                     {
-
+                        if(Content.Trim().Length==0|| !char.IsDigit(Content.Trim(), Content.Trim().Length-1))
+                        {
+                            Common.MessageBox.Show("BOXID不合法！");
+                            return;
+                        }
                         //StockBox sb = _stockboxRule.ChangeBoxBarCode(Content, ref ErrMsg);
-                        StockBox sb = _stockboxRule.ChangeBoxBarCode_Pro(Content, _currentStockBox.BarCode, ref ErrMsg);
+                        StockBox sb = _stockboxRule.ChangeBoxBarCode_Pro(Content.Trim(), _currentStockBox.BarCode, ref ErrMsg);
 
                         if (sb == null)
                         {
@@ -327,11 +331,16 @@ namespace SCG.SINOStock.ViewModels
                     return;
                 case PrintType.ForceBox:
 
-                    if (_currentStockBox.BarCode != Content)
+                    if (_currentStockBox.BarCode != Content.Trim())
                     {
-                       // string ErrMsg = string.Empty;
+                        if (Content.Trim().Length == 0 || !char.IsDigit(Content.Trim(), Content.Trim().Length - 1))
+                        {
+                            Common.MessageBox.Show("BOXID不合法！");
+                            return;
+                        }
+                        // string ErrMsg = string.Empty;
                         //StockBox sb = _stockboxRule.ChangeBoxBarCode(Content, ref ErrMsg);
-                        StockBox sb = _stockboxRule.ChangeBoxBarCode_Pro(Content, _currentStockBox.BarCode, ref ErrMsg);
+                        StockBox sb = _stockboxRule.ChangeBoxBarCode_Pro(Content.Trim(), _currentStockBox.BarCode, ref ErrMsg);
                         if (sb == null)
                         {
                             Common.MessageBox.Show(ErrMsg);
