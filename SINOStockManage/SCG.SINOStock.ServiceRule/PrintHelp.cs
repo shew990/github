@@ -709,7 +709,7 @@ Lo,24,583,768,586
                             iCurrentX += indexX;
                             i = 0;
                         }
-                        if (!IsModel2&&CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位或记录数超过63，换更小字体
+                        if (!IsModel2 && CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位或记录数超过63，换更小字体
                             sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
                         else
                             sb.Append(string.Format("AA,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
@@ -743,8 +743,16 @@ Lo,24,583,768,586
             }
         }
         #endregion
-
-        public static bool PrintStockBoxAgain_EXT(string strBox, string strProModel, PrintHelperEx[] strPrintArray, ref string ErrMsg)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strBox"></param>
+        /// <param name="isModify">是否修改过</param>
+        /// <param name="strProModel"></param>
+        /// <param name="strPrintArray"></param>
+        /// <param name="ErrMsg"></param>
+        /// <returns></returns>
+        public static bool PrintStockBoxAgain_EXT(string strBox, bool isModify, string strProModel, PrintHelperEx[] strPrintArray, ref string ErrMsg)
         {
             //  string strTest = string.Empty;
             openport("6"); //Ex:USB
@@ -794,7 +802,12 @@ Lo,24,583,768,586
 
                 string printProModel = string.Format("AZ2,18,20,1,1,0,0,型号:{0}\r\n", strProModel);
                 string printDate = string.Format("AZ2,18,54,1,1,0,0,日期:{0}\r\n", DateTime.Now.ToString("yyyy-MM-dd"));
-                string printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox + "*");//明文带"*"，条码不带
+                string printBOXID = "";
+                if (isModify)
+                    printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox + "*");//明文带"*"，条码不带
+                else
+                    printBOXID = string.Format("AZ2,4,88,1,1,0,0,BOXID:{0}\r\n", strBox);
+
                 //string printBOXIDBarCode = string.Format("BQ,346,59,2,6,60,0,0,{0}\r\n", strBox);
                 string printBOXIDBarCode = string.Format("BQ,320,57,2,6,60,0,0,{0}\r\n", strBox);
 
@@ -907,7 +920,7 @@ Lo,24,583,768,586
                             iCurrentX += indexX;
                             i = 0;
                         }
-                        if (!IsModel2&&CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位或者记录数超过63，换更小字体
+                        if (!IsModel2 && CutStr(17, detail.GlassID).Equals(detail.GlassID))//glassid超过17位或者记录数超过63，换更小字体
                             sb.Append(string.Format("AB,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));
                         else
                             sb.Append(string.Format("AA,{0},{1},1,1,0,0,{2}\r\n", iCurrentX, iCurrentY, detail.GlassID));

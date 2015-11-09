@@ -1026,10 +1026,11 @@ namespace SCG.SINOStock.ViewModels
                 string BarCode = param.Entity as string;
                 string ErrMsg = string.Empty;
                 StockBox box = _stockBoxRule.GetStockBoxToBarCode(BarCode, ref ErrMsg);
-
-                //if (box.IsModify != null && box.IsModify.Value)
-                //    //BarCode += "M";
-                //    BarCode += "*";
+                bool isModify = false;
+                if (box.IsModify != null && box.IsModify.Value)
+                    //BarCode += "M";
+                    //BarCode += "*";
+                isModify = true;
 
 
                 List<PrintHelperEx> lstPrint = new List<PrintHelperEx>();
@@ -1095,7 +1096,7 @@ namespace SCG.SINOStock.ViewModels
                     strProModel = box.StockDetails.First().StockLot.ProModel;
 
 
-                if (!PrintHelp.PrintStockBoxAgain_EXT(BarCode, strProModel, lstPrint.ToArray(), ref ErrMsg))
+                if (!PrintHelp.PrintStockBoxAgain_EXT(BarCode, isModify, strProModel, lstPrint.ToArray(), ref ErrMsg))
                     Common.MessageBox.Show(ErrMsg);
             }
             catch (Exception ex)
