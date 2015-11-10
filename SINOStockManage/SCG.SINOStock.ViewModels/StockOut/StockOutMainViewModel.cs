@@ -79,6 +79,7 @@ namespace SCG.SINOStock.ViewModels
                         SaveEntity.Status = STATIC_STATUS;
                         SaveEntity.DuMoNum = JiTaiHao;
                         SaveEntity.StockBoxID = CurrentStockBox.ID;
+
                         _stockLotRule.ModifyStockDetailListAsyns(SaveEntity);
                         break;
                     case CmdName.SendPrintData_Box:

@@ -284,7 +284,20 @@ namespace SCG.SINOStock.WCF
                     ErrMsg = "添加失败";
                     return false;
                 }
+                StockLot entityX = entities.StockLots.FirstOrDefault(p => p.ID != entity.ID && p.LotNo == entity.LotNo);//如果发病加了两条，去一条
+                if (entityX!=null)
+                {
+                    var DetailList = entities.StockDetails.Where(p => p.StockLotID == entityX.ID);
+                    foreach (var item in DetailList)
+                    {
+                        entities.StockDetails.Remove(item);
+                    }
+                    entities.StockLots.Remove(entityX);
+                    entities.SaveChanges();
+                }
+                    
                 StockLotID = entity.ID;
+                
                 return true;
             }
             catch (Exception ex)
