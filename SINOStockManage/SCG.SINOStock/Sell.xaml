@@ -33,7 +33,7 @@
                         <Image Name="btnChangePassWord" Source="Assets/Images/chgPwd.png" Width="32" Height="32" Margin="5" MouseLeftButtonDown="btnChangePassWord_MouseLeftButtonDown"/>
                         <Image Name="btnLogout" Source="Assets/Images/Logout.png" Width="32" Height="32" Margin="5" MouseLeftButtonDown="btnLogout_MouseLeftButtonDown_1"/>
                     </StackPanel>
-                    <TextBlock Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right">当前版本:v2.0.2.7</TextBlock>
+                    <TextBlock Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right">当前版本:v2.0.3.7</TextBlock>
                 </Grid>
                 <ContentControl Grid.Row="1" Name="ContentMain" Margin="30 0 30 30" Style="{StaticResource ShadowContainerStyle}"  >
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

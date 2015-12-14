@@ -526,7 +526,7 @@ Lo,24,583,768,586
                     string strTmp = item;
 
                     //TODO:打印到文件
-                    Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
+                    //Common.TestHelper.WriteDataLine("D:\\testBox.txt", strTmp.Trim(), ref ErrMsg);
                     byte[] by = System.Text.Encoding.Default.GetBytes(strTmp.Trim());
                     sendcommand(by);
                     //  strTest += strTmp + "\r\n";

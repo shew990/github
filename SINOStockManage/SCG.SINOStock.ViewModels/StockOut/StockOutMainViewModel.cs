@@ -32,6 +32,10 @@ namespace SCG.SINOStock.ViewModels
         private StockBoxRule _stockBoxRule = null;
         private TrayRule _trayRule = null;
         private StockDetail SaveEntity = null;//用以保存扫描的GlassID
+        /// <summary>
+        /// 中断后强制打印
+        /// </summary>
+        private bool IsInterruptForcePrint = false;
         public StockOutMainViewModel()
         {
             _eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
@@ -57,7 +61,6 @@ namespace SCG.SINOStock.ViewModels
                             Target = "StockOutMainView",
                         });
 
-                        ReadComTest();
 
                         if (!string.IsNullOrWhiteSpace(param.Tag))
                         {
@@ -66,6 +69,8 @@ namespace SCG.SINOStock.ViewModels
                         }
                         else
                             GetUnPrintData();
+                        ReadComTest();
+
                         break;
                     case CmdName.SaveGlassID:
 
@@ -200,7 +205,7 @@ namespace SCG.SINOStock.ViewModels
                         //这里加是否满箱判断原因：当得到上次异常蛮像的数据时，这个异步方法还未执行完毕
                         if (CurrentFormwork != null && ScanStockDetail != null && ScanStockDetail.SelectMany(p => p.Item).Count() >= CurrentFormwork.BoxPCSQty)
                         {
-                            if (Common.ReadCOM.serialport!=null&&Common.ReadCOM.serialport.IsOpen)
+                            if (Common.ReadCOM.serialport != null && Common.ReadCOM.serialport.IsOpen)
                             {
                                 Common.ReadCOM.serialport.Close();
                             }
@@ -215,6 +220,19 @@ namespace SCG.SINOStock.ViewModels
                                 Entity1 = CurrentStockBox,
                             });
                             ReadComTest();
+                        }
+                        else if (IsInterruptForcePrint)
+                        {
+                            _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
+                            {
+                                cmdViewName = CmdViewName.ToolEnterNoToPrintView,
+                                Entity = PrintType.ForceBox,
+                                Tag = CurrentStockLot.ID.ToString(),
+                                cmdName = CmdName.New,
+                                Target = "Sell",
+                                Entity1 = CurrentStockBox,
+                            });
+                            IsInterruptForcePrint = false;
                         }
                     }
                 };
@@ -1031,7 +1049,7 @@ namespace SCG.SINOStock.ViewModels
                 if (box.IsModify != null && box.IsModify.Value)
                     //BarCode += "M";
                     //BarCode += "*";
-                isModify = true;
+                    isModify = true;
 
 
                 List<PrintHelperEx> lstPrint = new List<PrintHelperEx>();
@@ -1229,26 +1247,6 @@ namespace SCG.SINOStock.ViewModels
                         }
 
 
-                        //判断是否可以直接打印
-                        if (CurrentFormwork != null && ScanStockDetail.SelectMany(p => p.Item).Count() >= CurrentFormwork.BoxPCSQty)
-                        {
-                            if (Common.ReadCOM.serialport != null && Common.ReadCOM.serialport.IsOpen)
-                            {
-                                Common.ReadCOM.serialport.Close();
-                            }
-                            MessageBox.Show("BOX已满，点击确定打印外箱凭条");
-                            _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
-                            {
-                                cmdViewName = CmdViewName.ToolEnterNoToPrintView,
-                                Entity = PrintType.Box,
-                                Tag = CurrentStockLot.ID.ToString(),
-                                cmdName = CmdName.New,
-                                Target = "Sell",
-                                Entity1 = CurrentStockBox,
-                            });
-                            ReadComTest();
-
-                        }
                     }
 
                 }
@@ -1277,18 +1275,24 @@ namespace SCG.SINOStock.ViewModels
                         tmpEx.Item.Add(item);
 
                     }
-                    _eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
-                    {
-                        cmdViewName = CmdViewName.ToolEnterNoToPrintView,
-                        Entity = PrintType.ForceBox,
-                        Tag = CurrentStockLot.ID.ToString(),
-                        cmdName = CmdName.New,
-                        Target = "Sell",
-                        Entity1 = CurrentStockBox,
-                    });
+                    //_eventAggregator.GetEvent<CmdEvent>().Publish(new CmdEventParam()
+                    //{
+                    //    cmdViewName = CmdViewName.ToolEnterNoToPrintView,
+                    //    Entity = PrintType.ForceBox,
+                    //    Tag = CurrentStockLot.ID.ToString(),
+                    //    cmdName = CmdName.New,
+                    //    Target = "Sell",
+                    //    Entity1 = CurrentStockBox,
+                    //});
+                    IsInterruptForcePrint = true;
                 }
             }
 
+        }
+
+        private void _formWorkRule_GetFormWorkByProModelCompleted(object sender, ResultArgs<FormWork> e)
+        {
+            throw new NotImplementedException();
         }
     }
 
