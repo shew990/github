@@ -541,7 +541,7 @@ namespace SCG.SINOStock.WCF
 
             try
             {
-                return entities.StockBoxes.Include("StockDetails").Include("StockDetails.StockLot").FirstOrDefault(p => p.isPrint == false && p.CreateAccountID == AccountID);
+                return entities.StockBoxes.Include("StockDetails").Include("StockDetails.StockLot").FirstOrDefault(p => p.isPrint == false && p.CreateAccountID == AccountID && p.StockDetails.Count > 0);
             }
             catch (Exception ex)
             {
